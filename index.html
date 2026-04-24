@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evento Brice</title>
+
   <style>
     * {
       margin: 0;
@@ -32,45 +33,18 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.25);
       text-align: center;
       position: relative;
-      animation: fadeIn 0.8s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .container::before {
-      content: "✦";
-      position: absolute;
-      top: 18px;
-      right: 25px;
-      font-size: 28px;
-      color: #043222;
-    }
-
-    .container::after {
-      content: "✦";
-      position: absolute;
-      bottom: 18px;
-      left: 25px;
-      font-size: 28px;
-      color: #043222;
     }
 
     h1 {
       font-size: 2rem;
       font-weight: 800;
-      letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 8px;
-      color: #043222;
     }
 
     .subtitle {
       margin-bottom: 30px;
       font-size: 1rem;
-      font-weight: 500;
       opacity: 0.85;
       padding-bottom: 20px;
       border-bottom: 1.5px solid #043222;
@@ -82,7 +56,6 @@
 
     .form-group {
       margin-bottom: 18px;
-      position: relative;
     }
 
     label {
@@ -90,31 +63,15 @@
       font-weight: 600;
       margin-bottom: 6px;
       font-size: 0.9rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
     }
 
     input, textarea, select {
       width: 100%;
-      padding: 13px 15px;
+      padding: 13px;
       border: 2px solid #043222;
       border-radius: 10px;
       background: transparent;
       color: #043222;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: all 0.3s ease;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(4, 50, 34, 0.2);
-      transform: translateY(-1px);
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: rgba(4, 50, 34, 0.5);
     }
 
     textarea {
@@ -139,22 +96,8 @@
       border: none;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
       cursor: pointer;
       margin-top: 10px;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: #065a3d;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(4, 50, 34, 0.4);
-    }
-
-    button:active {
-      transform: translateY(0);
     }
 
     #status {
@@ -163,7 +106,6 @@
       padding: 12px;
       border-radius: 8px;
       display: none;
-      animation: slideIn 0.4s ease;
     }
 
     #status.success {
@@ -174,113 +116,57 @@
 
     #status.error {
       display: block;
-      background: #F6E9D9;
-      color: #043222;
       border: 2px solid #043222;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .event-info {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 25px;
-      padding: 15px;
-      background: rgba(4, 50, 34, 0.08);
-      border-radius: 10px;
-    }
-
-    .info-item {
-      text-align: center;
-      font-size: 0.85rem;
-    }
-
-    .info-item strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 3px;
-    }
-
-    @media (max-width: 500px) {
-      .container {
-        padding: 35px 25px;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-      .row {
-        flex-direction: column;
-        gap: 0;
-      }
-      .event-info {
-        flex-direction: column;
-        gap: 10px;
-      }
     }
   </style>
 </head>
+
 <body>
 
 <div class="container">
   <h1>Evento Brice</h1>
-  <p class="subtitle">Reserva tu plaza rellenando el formulario ✦</p>
-
-  <div class="event-info">
-    <div class="info-item">
-      <strong>📅 Fecha</strong>
-      15 Dic 2025
-    </div>
-    <div class="info-item">
-      <strong>📍 Lugar</strong>
-      Madrid
-    </div>
-    <div class="info-item">
-      <strong>🎟️ Plazas</strong>
-      Limitadas
-    </div>
-  </div>
+  <p class="subtitle">Reserva tu plaza</p>
 
   <form id="form">
+
     <div class="row">
       <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        <label>Nombre</label>
+        <input id="nombre" required>
       </div>
+
       <div class="form-group">
-        <label for="apellido">Apellido</label>
-        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+        <label>Apellido</label>
+        <input id="apellido" required>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+      <label>Email</label>
+      <input id="email" type="email" required>
     </div>
 
     <div class="form-group">
-      <label for="telefono">Teléfono</label>
-      <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+      <label>Teléfono</label>
+      <input id="telefono">
     </div>
 
     <div class="form-group">
-      <label for="asistentes">Nº de asistentes</label>
-      <select id="asistentes" name="asistentes" required>
-        <option value="1">1 persona</option>
-        <option value="2">2 personas</option>
-        <option value="3">3 personas</option>
-        <option value="4+">4 o más</option>
+      <label>Asistentes</label>
+      <select id="asistentes">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" placeholder="¿Alguna preferencia o comentario?"></textarea>
+      <label>Mensaje</label>
+      <textarea id="mensaje"></textarea>
     </div>
 
-    <button type="submit">✦ Reservar Plaza</button>
+    <button type="submit">Reservar</button>
+
   </form>
 
   <div id="status"></div>
@@ -290,28 +176,44 @@
   const form = document.getElementById("form");
   const status = document.getElementById("status");
 
-  form.addEventListener("submit", function(e){
+  form.addEventListener("submit", async function(e) {
     e.preventDefault();
-    
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-    
-    // Validación simple del email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+
+    status.style.display = "block";
+    status.className = "";
+    status.innerText = "Enviando...";
+
+    const data = {
+      nombre: document.getElementById("nombre").value.trim(),
+      apellido: document.getElementById("apellido").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      telefono: document.getElementById("telefono").value.trim(),
+      asistentes: document.getElementById("asistentes").value,
+      mensaje: document.getElementById("mensaje").value.trim()
+    };
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        status.className = "success";
+        status.innerText = "Reserva enviada correctamente";
+        form.reset();
+      } else {
+        status.className = "error";
+        status.innerText = result.error || "Error al enviar";
+      }
+
+    } catch (err) {
       status.className = "error";
-      status.innerText = "⚠️ Por favor, introduce un email válido.";
-      return;
+      status.innerText = "Error de conexión";
     }
-    
-    status.className = "success";
-    status.innerText = `✓ ¡Gracias ${nombre}! Tu plaza ha sido reservada.`;
-    form.reset();
-    
-    // Ocultar mensaje tras 5 segundos
-    setTimeout(() => {
-      status.style.display = "none";
-    }, 5000);
   });
 </script>
 
