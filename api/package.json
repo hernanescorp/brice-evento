@@ -1,0 +1,9 @@
+{
+  "name": "brice-api",
+  "version": "1.0.0",
+  "main": "contacto/index.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {}
+}
