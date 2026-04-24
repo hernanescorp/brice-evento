@@ -2,88 +2,317 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evento Brice</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #F6E9D9;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #043222 0%, #043222 45%, #F6E9D9 45%, #F6E9D9 100%);
       color: #043222;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
-      width: 90%;
-      max-width: 500px;
+      width: 100%;
+      max-width: 520px;
       background: #F6E9D9;
-      border: 1px solid #043222;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 2px solid #043222;
+      border-radius: 20px;
+      padding: 45px 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
       text-align: center;
+      position: relative;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container::before {
+      content: "✦";
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 28px;
+      color: #043222;
+    }
+
+    .container::after {
+      content: "✦";
+      position: absolute;
+      bottom: 18px;
+      left: 25px;
+      font-size: 28px;
+      color: #043222;
     }
 
     h1 {
-      margin-bottom: 10px;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: #043222;
     }
 
-    p {
-      margin-bottom: 20px;
+    .subtitle {
+      margin-bottom: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.85;
+      padding-bottom: 20px;
+      border-bottom: 1.5px solid #043222;
     }
 
-    input, textarea {
+    form {
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    input, textarea, select {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #043222;
-      border-radius: 8px;
+      padding: 13px 15px;
+      border: 2px solid #043222;
+      border-radius: 10px;
+      background: transparent;
+      color: #043222;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(4, 50, 34, 0.2);
+      transform: translateY(-1px);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(4, 50, 34, 0.5);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .row .form-group {
+      flex: 1;
     }
 
     button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       background: #043222;
       color: #F6E9D9;
       border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      opacity: 0.9;
+      background: #065a3d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(4, 50, 34, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     #status {
-      margin-top: 10px;
-      font-weight: bold;
+      margin-top: 15px;
+      font-weight: 600;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+      animation: slideIn 0.4s ease;
+    }
+
+    #status.success {
+      display: block;
+      background: #043222;
+      color: #F6E9D9;
+    }
+
+    #status.error {
+      display: block;
+      background: #F6E9D9;
+      color: #043222;
+      border: 2px solid #043222;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .event-info {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+      padding: 15px;
+      background: rgba(4, 50, 34, 0.08);
+      border-radius: 10px;
+    }
+
+    .info-item {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .info-item strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 35px 25px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      .row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .event-info {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Evento Brice 🚀</h1>
-  <p>Reserva tu plaza rellenando el formulario</p>
+  <h1>Evento Brice</h1>
+  <p class="subtitle">Reserva tu plaza rellenando el formulario ✦</p>
+
+  <div class="event-info">
+    <div class="info-item">
+      <strong>📅 Fecha</strong>
+      15 Dic 2025
+    </div>
+    <div class="info-item">
+      <strong>📍 Lugar</strong>
+      Madrid
+    </div>
+    <div class="info-item">
+      <strong>🎟️ Plazas</strong>
+      Limitadas
+    </div>
+  </div>
 
   <form id="form">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="mensaje" placeholder="Mensaje"></textarea>
-    <button type="submit">Enviar</button>
+    <div class="row">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000">
+    </div>
+
+    <div class="form-group">
+      <label for="asistentes">Nº de asistentes</label>
+      <select id="asistentes" name="asistentes" required>
+        <option value="1">1 persona</option>
+        <option value="2">2 personas</option>
+        <option value="3">3 personas</option>
+        <option value="4+">4 o más</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" placeholder="¿Alguna preferencia o comentario?"></textarea>
+    </div>
+
+    <button type="submit">✦ Reservar Plaza</button>
   </form>
 
   <div id="status"></div>
 </div>
 
 <script>
-document.getElementById("form").addEventListener("submit", function(e){
-  e.preventDefault();
-  document.getElementById("status").innerText = "Formulario enviado (aún sin backend)";
-});
+  const form = document.getElementById("form");
+  const status = document.getElementById("status");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    
+    // Validación simple del email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      status.className = "error";
+      status.innerText = "⚠️ Por favor, introduce un email válido.";
+      return;
+    }
+    
+    status.className = "success";
+    status.innerText = `✓ ¡Gracias ${nombre}! Tu plaza ha sido reservada.`;
+    form.reset();
+    
+    // Ocultar mensaje tras 5 segundos
+    setTimeout(() => {
+      status.style.display = "none";
+    }, 5000);
+  });
 </script>
 
 </body>
