@@ -1,288 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evento Brice</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evento Brice</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #043222;
-      min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  color: #043222;
+}
 
-      /* 🔥 FONDO CON IMAGEN */
-      background:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
-        url("assets/images/backgrounds/brice.jpg");
+/* 🔥 HERO (IMAGEN COMPLETA) */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+    url("assets/images/backgrounds/brice.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #F6E9D9;
+  text-align: center;
+  padding: 20px;
+}
 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
 
-      animation: zoomBg 20s ease-in-out infinite alternate;
-    }
+.hero p {
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+}
 
-    @keyframes zoomBg {
-      0% { background-size: 100%; }
-      100% { background-size: 110%; }
-    }
+.hero button {
+  padding: 14px 28px;
+  background: #F6E9D9;
+  color: #043222;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
 
-    .container {
-      width: 100%;
-      max-width: 540px;
-      background: rgba(246, 233, 217, 0.92);
-      border: 2px solid #043222;
-      border-radius: 24px;
-      padding: 42px 40px;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.6);
-      text-align: center;
-      backdrop-filter: blur(10px);
-      animation: cardEntrance 0.9s ease forwards;
-    }
+/* FORM SECTION */
+.form-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #043222;
+}
 
-    @keyframes cardEntrance {
-      from {
-        opacity: 0;
-        transform: translateY(35px) scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
+/* FORM CARD */
+.container {
+  width: 100%;
+  max-width: 540px;
+  background: rgba(246, 233, 217, 0.95);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+  animation: fadeUp 1s ease;
+}
 
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 22px;
-    }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(50px); }
+  to { opacity:1; transform: translateY(0); }
+}
 
-    .logo-container img {
-      max-width: 145px;
-      height: auto;
-      object-fit: contain;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-      animation: logoFloat 3.5s ease-in-out infinite;
-    }
+/* LOGO */
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+.logo-container img {
+  max-width: 130px;
+}
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-      color: #043222;
-    }
+/* TEXT */
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
 
-    .subtitle {
-      margin-bottom: 30px;
-      font-size: 1rem;
-      opacity: 0.9;
-      padding-bottom: 22px;
-      border-bottom: 1.5px solid #043222;
-    }
+.subtitle {
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-    form {
-      text-align: left;
-    }
+/* FORM */
+.form-group { margin-bottom: 15px; }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
+label {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 
-    label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 7px;
-      font-size: 0.9rem;
-    }
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #043222;
+}
 
-    input, textarea, select {
-      width: 100%;
-      padding: 14px;
-      border: 2px solid #043222;
-      border-radius: 12px;
-      background: rgba(246, 233, 217, 0.65);
-      color: #043222;
-      outline: none;
-      transition: all 0.25s ease;
-      font-size: 0.95rem;
-    }
+.row {
+  display: flex;
+  gap: 10px;
+}
 
-    input:focus, textarea:focus, select:focus {
-      background: #fff7ed;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(4,50,34,0.18);
-    }
+.row .form-group { flex:1; }
 
-    textarea {
-      resize: vertical;
-      min-height: 95px;
-    }
+button.submit {
+  width: 100%;
+  padding: 14px;
+  background: #043222;
+  color: #F6E9D9;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  margin-top: 10px;
+}
 
-    .row {
-      display: flex;
-      gap: 12px;
-    }
+#status {
+  margin-top: 10px;
+  display: none;
+  text-align:center;
+}
 
-    .row .form-group {
-      flex: 1;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      background: #043222;
-      color: #F6E9D9;
-      border: none;
-      border-radius: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      margin-top: 10px;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      transition: all 0.25s ease;
-      box-shadow: 0 12px 25px rgba(4,50,34,0.28);
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 35px rgba(4,50,34,0.35);
-      background: #07583c;
-    }
-
-    #status {
-      margin-top: 15px;
-      font-weight: 700;
-      padding: 12px;
-      border-radius: 10px;
-      display: none;
-      text-align: center;
-    }
-
-    #status.success {
-      display: block;
-      background: #043222;
-      color: #F6E9D9;
-    }
-
-    #status.error {
-      display: block;
-      border: 2px solid #043222;
-      background: rgba(246, 233, 217, 0.8);
-      color: #043222;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 34px 24px;
-      }
-
-      .row {
-        flex-direction: column;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+@media(max-width:600px){
+  .row { flex-direction: column; }
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- 🔥 HERO -->
+<section class="hero">
+  <h1>Intensivo 2 días con Brice</h1>
+  <p>Plazas limitadas</p>
+  <button onclick="scrollToForm()">Reservar plaza</button>
+</section>
 
-  <div class="logo-container">
-    <img src="assets/images/logos/logo.jpg" alt="Logo Brice">
+<!-- FORM -->
+<section class="form-section" id="formSection">
+  <div class="container">
+
+    <div class="logo-container">
+      <img src="assets/images/logos/logo.jpg">
+    </div>
+
+    <h2>Reserva tu plaza</h2>
+    <p class="subtitle">Completa el formulario</p>
+
+    <form id="form">
+
+      <div class="row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input id="nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input id="apellido" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input id="telefono">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>País nacimiento</label>
+          <input id="paisNacimiento" required>
+        </div>
+        <div class="form-group">
+          <label>Edad</label>
+          <input id="edad" type="number" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label>Ciudad</label>
+          <input id="ciudadResidencia" required>
+        </div>
+        <div class="form-group">
+          <label>País</label>
+          <input id="paisResidencia" required>
+        </div>
+      </div>
+
+      <button class="submit" type="submit">Reservar</button>
+
+    </form>
+
+    <div id="status"></div>
   </div>
-
-  <h1>Intensivo de 2 días con Brice</h1>
-  <p class="subtitle">Reserva tu plaza</p>
-
-  <form id="form">
-
-    <div class="row">
-      <div class="form-group">
-        <label>Nombre</label>
-        <input id="nombre" required>
-      </div>
-      <div class="form-group">
-        <label>Apellido</label>
-        <input id="apellido" required>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input id="email" type="email" required>
-    </div>
-
-    <div class="form-group">
-      <label>Teléfono</label>
-      <input id="telefono">
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <label>País de nacimiento</label>
-        <input id="paisNacimiento" required>
-      </div>
-      <div class="form-group">
-        <label>Edad</label>
-        <input id="edad" type="number" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <label>Ciudad donde vive</label>
-        <input id="ciudadResidencia" required>
-      </div>
-      <div class="form-group">
-        <label>País donde vive</label>
-        <input id="paisResidencia" required>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Asistentes</label>
-      <select id="asistentes">
-        <option value="1">1</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Mensaje</label>
-      <textarea id="mensaje"></textarea>
-    </div>
-
-    <button type="submit">Reservar plaza</button>
-
-  </form>
-
-  <div id="status"></div>
-</div>
+</section>
 
 <script>
+function scrollToForm() {
+  document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
+}
+
 const form = document.getElementById("form");
 const status = document.getElementById("status");
 
@@ -290,43 +230,30 @@ form.addEventListener("submit", async function(e) {
   e.preventDefault();
 
   status.style.display = "block";
-  status.className = "";
   status.innerText = "Enviando...";
 
   const data = {
-    nombre: document.getElementById("nombre").value.trim(),
-    apellido: document.getElementById("apellido").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    telefono: document.getElementById("telefono").value.trim(),
-    paisNacimiento: document.getElementById("paisNacimiento").value.trim(),
-    edad: document.getElementById("edad").value.trim(),
-    ciudadResidencia: document.getElementById("ciudadResidencia").value.trim(),
-    paisResidencia: document.getElementById("paisResidencia").value.trim(),
-    asistentes: document.getElementById("asistentes").value,
-    mensaje: document.getElementById("mensaje").value.trim()
+    nombre: nombre.value,
+    apellido: apellido.value,
+    email: email.value,
+    telefono: telefono.value,
+    paisNacimiento: paisNacimiento.value,
+    edad: edad.value,
+    ciudadResidencia: ciudadResidencia.value,
+    paisResidencia: paisResidencia.value
   };
 
-  try {
-    const res = await fetch("/api/contacto", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
+  const res = await fetch("/api/contacto", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
 
-    const result = await res.json();
-
-    if (res.ok) {
-      status.className = "success";
-      status.innerText = "Reserva enviada correctamente";
-      form.reset();
-    } else {
-      status.className = "error";
-      status.innerText = result.error || "Error al enviar";
-    }
-
-  } catch (err) {
-    status.className = "error";
-    status.innerText = "Error de conexión";
+  if(res.ok){
+    status.innerText = "Reserva enviada";
+    form.reset();
+  } else {
+    status.innerText = "Error";
   }
 });
 </script>
