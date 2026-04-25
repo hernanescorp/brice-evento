@@ -35,6 +35,19 @@
       position: relative;
     }
 
+    /* LOGO */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      max-width: 140px;
+      height: auto;
+      object-fit: contain;
+    }
+
     h1 {
       font-size: 2rem;
       font-weight: 800;
@@ -124,6 +137,12 @@
 <body>
 
 <div class="container">
+
+  <!-- LOGO -->
+  <div class="logo-container">
+    <img src="assets/images/logos/logo.png" alt="Logo Brice">
+  </div>
+
   <h1>Evento Brice</h1>
   <p class="subtitle">Reserva tu plaza</p>
 
