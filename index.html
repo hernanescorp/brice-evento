@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Evento Brice</title>
 
   <style>
@@ -14,52 +14,98 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #043222 0%, #043222 45%, #F6E9D9 45%, #F6E9D9 100%);
       color: #043222;
+      min-height: 100vh;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #043222, #07583c, #F6E9D9, #e8d1b5);
+      background-size: 400% 400%;
+      animation: animatedBackground 12s ease infinite;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(246,233,217,0.35), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(4,50,34,0.35), transparent 30%);
+      animation: floatingLight 8s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes animatedBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes floatingLight {
+      from { transform: translateY(-20px) scale(1); }
+      to { transform: translateY(20px) scale(1.08); }
     }
 
     .container {
       width: 100%;
-      max-width: 520px;
-      background: #F6E9D9;
+      max-width: 540px;
+      background: rgba(246, 233, 217, 0.92);
       border: 2px solid #043222;
-      border-radius: 20px;
-      padding: 45px 40px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      border-radius: 24px;
+      padding: 42px 40px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.32);
       text-align: center;
-      position: relative;
+      backdrop-filter: blur(12px);
+      animation: cardEntrance 0.9s ease forwards;
     }
 
-    /* LOGO */
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     .logo-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .logo-container img {
-      max-width: 140px;
+      max-width: 145px;
       height: auto;
       object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      animation: logoFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     h1 {
       font-size: 2rem;
-      font-weight: 800;
+      line-height: 1.05;
+      font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
 
     .subtitle {
       margin-bottom: 30px;
       font-size: 1rem;
-      opacity: 0.85;
-      padding-bottom: 20px;
+      opacity: 0.9;
+      padding-bottom: 22px;
       border-bottom: 1.5px solid #043222;
     }
 
@@ -73,23 +119,32 @@
 
     label {
       display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-weight: 700;
+      margin-bottom: 7px;
       font-size: 0.9rem;
     }
 
     input, textarea, select {
       width: 100%;
-      padding: 13px;
+      padding: 14px;
       border: 2px solid #043222;
-      border-radius: 10px;
-      background: transparent;
+      border-radius: 12px;
+      background: rgba(246, 233, 217, 0.65);
       color: #043222;
+      outline: none;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      background: #fff7ed;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(4,50,34,0.18);
     }
 
     textarea {
       resize: vertical;
-      min-height: 90px;
+      min-height: 95px;
     }
 
     .row {
@@ -103,22 +158,37 @@
 
     button {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       background: #043222;
       color: #F6E9D9;
       border: none;
-      border-radius: 10px;
-      font-weight: 700;
+      border-radius: 12px;
+      font-weight: 800;
       cursor: pointer;
       margin-top: 10px;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 25px rgba(4,50,34,0.28);
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(4,50,34,0.35);
+      background: #07583c;
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     #status {
       margin-top: 15px;
-      font-weight: 600;
+      font-weight: 700;
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       display: none;
+      text-align: center;
     }
 
     #status.success {
@@ -130,6 +200,27 @@
     #status.error {
       display: block;
       border: 2px solid #043222;
+      background: rgba(246, 233, 217, 0.8);
+      color: #043222;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 34px 24px;
+      }
+
+      .row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .logo-container img {
+        max-width: 120px;
+      }
     }
   </style>
 </head>
@@ -138,12 +229,11 @@
 
 <div class="container">
 
-  <!-- LOGO -->
   <div class="logo-container">
     <img src="assets/images/logos/logo.jpg" alt="Logo Brice">
   </div>
 
-  <h1>INTENSIVO DE 2 DIAS CON BRICE</h1>
+  <h1>Intensivo de 2 días con Brice</h1>
   <p class="subtitle">Reserva tu plaza</p>
 
   <form id="form">
@@ -174,8 +264,6 @@
       <label>Asistentes</label>
       <select id="asistentes">
         <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
       </select>
     </div>
 
@@ -184,7 +272,7 @@
       <textarea id="mensaje"></textarea>
     </div>
 
-    <button type="submit">Reservar</button>
+    <button type="submit">Reservar plaza</button>
 
   </form>
 
