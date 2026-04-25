@@ -59,7 +59,7 @@ body {
   background: #ffffff;
 }
 
-/* FORM SECTION CON FONDO DINÁMICO */
+/* FORM SECTION */
 .form-section {
   min-height: 100vh;
   display: flex;
@@ -210,7 +210,7 @@ button.submit:hover {
   box-shadow: 0 18px 35px rgba(4,50,34,0.35);
 }
 
-/* STATUS BONITO */
+/* STATUS */
 #status {
   margin-top: 16px;
   font-weight: 800;
@@ -250,6 +250,30 @@ button.submit:hover {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 22px 10px 32px;
+  background: #043222;
+  color: #F6E9D9;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.footer img {
+  display: block;
+  margin: 9px auto 0;
+  max-width: 80px;
+  opacity: 0.82;
+  transition: all 0.3s ease;
+}
+
+.footer img:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 /* MODAL PRIVACIDAD */
@@ -446,6 +470,11 @@ button.submit:hover {
     <div id="status"></div>
   </div>
 </section>
+
+<footer class="footer">
+  <span>Powered by Graxiano</span>
+  <img src="assets/images/logos/graxiano.png" alt="Logo Graxiano">
+</footer>
 
 <div class="modal" id="privacyModal">
   <div class="modal-content">
