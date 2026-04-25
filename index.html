@@ -166,6 +166,30 @@ textarea {
 
 .row .form-group { flex:1; }
 
+.privacy-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.privacy-group input {
+  width: auto;
+  margin-top: 3px;
+  transform: scale(1.15);
+}
+
+.privacy-group label {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.privacy-link {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 800;
+}
+
 button.submit {
   width: 100%;
   padding: 14px;
@@ -228,6 +252,85 @@ button.submit:hover {
   }
 }
 
+/* MODAL PRIVACIDAD */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 560px;
+  background: #F6E9D9;
+  color: #043222;
+  border: 2px solid #043222;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.55);
+  animation: modalPop 0.3s ease;
+}
+
+.modal-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.modal-content ul {
+  margin: 10px 0 20px 18px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modal-actions .accept {
+  background: #043222;
+  color: #F6E9D9;
+}
+
+.modal-actions .close {
+  background: transparent;
+  color: #043222;
+  border: 2px solid #043222;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media(max-width:600px){
   .hero h1 {
     font-size: 2rem;
@@ -240,6 +343,10 @@ button.submit:hover {
   .row {
     flex-direction: column;
     gap: 0;
+  }
+
+  .modal-actions {
+    flex-direction: column;
   }
 }
 </style>
@@ -323,6 +430,15 @@ button.submit:hover {
         <textarea id="mensaje"></textarea>
       </div>
 
+      <div class="privacy-group">
+        <input type="checkbox" id="privacy" />
+        <label for="privacy">
+          Acepto la
+          <span class="privacy-link" onclick="openPrivacyModal()">política de privacidad</span>
+          y el tratamiento de mis datos para gestionar mi reserva.
+        </label>
+      </div>
+
       <button class="submit" type="submit">Reservar plaza</button>
 
     </form>
@@ -331,9 +447,49 @@ button.submit:hover {
   </div>
 </section>
 
+<div class="modal" id="privacyModal">
+  <div class="modal-content">
+    <h3>Política de privacidad</h3>
+
+    <p>
+      Los datos introducidos en este formulario se utilizarán únicamente para gestionar tu inscripción
+      al evento “Intensivo 2 días con Brice” y contactar contigo en relación con la reserva.
+    </p>
+
+    <ul>
+      <li>Finalidad: gestión de la reserva y comunicación sobre el evento.</li>
+      <li>Datos tratados: nombre, apellido, email, teléfono, edad, país de nacimiento, ciudad y país de residencia.</li>
+      <li>No se venderán ni compartirán tus datos con terceros para fines comerciales.</li>
+      <li>Puedes solicitar la eliminación o modificación de tus datos contactando con el organizador.</li>
+    </ul>
+
+    <p>
+      Al aceptar, confirmas que has leído esta información y autorizas el tratamiento de tus datos para esta finalidad.
+    </p>
+
+    <div class="modal-actions">
+      <button class="close" onclick="closePrivacyModal()">Cerrar</button>
+      <button class="accept" onclick="acceptPrivacy()">Aceptar política</button>
+    </div>
+  </div>
+</div>
+
 <script>
 function scrollToForm() {
   document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
+}
+
+function openPrivacyModal() {
+  document.getElementById("privacyModal").style.display = "flex";
+}
+
+function closePrivacyModal() {
+  document.getElementById("privacyModal").style.display = "none";
+}
+
+function acceptPrivacy() {
+  document.getElementById("privacy").checked = true;
+  closePrivacyModal();
 }
 
 const form = document.getElementById("form");
@@ -341,6 +497,13 @@ const status = document.getElementById("status");
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
+
+  if (!document.getElementById("privacy").checked) {
+    status.className = "error";
+    status.style.display = "block";
+    status.innerText = "Debes aceptar la política de privacidad para reservar tu plaza.";
+    return;
+  }
 
   status.style.display = "block";
   status.className = "";
@@ -356,7 +519,9 @@ form.addEventListener("submit", async function(e) {
     ciudadResidencia: document.getElementById("ciudadResidencia").value.trim(),
     paisResidencia: document.getElementById("paisResidencia").value.trim(),
     asistentes: document.getElementById("asistentes").value,
-    mensaje: document.getElementById("mensaje").value.trim()
+    mensaje: document.getElementById("mensaje").value.trim(),
+    privacyAccepted: true,
+    privacyAcceptedAt: new Date().toISOString()
   };
 
   try {
