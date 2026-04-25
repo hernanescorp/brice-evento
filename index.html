@@ -178,10 +178,6 @@
       background: #07583c;
     }
 
-    button:active {
-      transform: translateY(0);
-    }
-
     #status {
       margin-top: 15px;
       font-weight: 700;
@@ -260,6 +256,30 @@
       <input id="telefono">
     </div>
 
+    <div class="row">
+      <div class="form-group">
+        <label>País de nacimiento</label>
+        <input id="paisNacimiento" required>
+      </div>
+
+      <div class="form-group">
+        <label>Edad</label>
+        <input id="edad" type="number" min="0" max="120" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label>Ciudad donde vive</label>
+        <input id="ciudadResidencia" required>
+      </div>
+
+      <div class="form-group">
+        <label>País donde vive</label>
+        <input id="paisResidencia" required>
+      </div>
+    </div>
+
     <div class="form-group">
       <label>Asistentes</label>
       <select id="asistentes">
@@ -295,6 +315,10 @@
       apellido: document.getElementById("apellido").value.trim(),
       email: document.getElementById("email").value.trim(),
       telefono: document.getElementById("telefono").value.trim(),
+      paisNacimiento: document.getElementById("paisNacimiento").value.trim(),
+      edad: document.getElementById("edad").value.trim(),
+      ciudadResidencia: document.getElementById("ciudadResidencia").value.trim(),
+      paisResidencia: document.getElementById("paisResidencia").value.trim(),
       asistentes: document.getElementById("asistentes").value,
       mensaje: document.getElementById("mensaje").value.trim()
     };

@@ -1,4 +1,4 @@
-const { TableClient, AzureNamedKeyCredential } = require("@azure/data-tables");
+const { TableClient } = require("@azure/data-tables");
 
 function getTableClient() {
   const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
@@ -15,13 +15,22 @@ module.exports = async function (context, req) {
     const apellido = (data.apellido || "").trim();
     const email = (data.email || "").trim();
     const telefono = (data.telefono || "").trim();
+    const paisNacimiento = (data.paisNacimiento || "").trim();
+    const edad = String(data.edad || "").trim();
+    const ciudadResidencia = (data.ciudadResidencia || "").trim();
+    const paisResidencia = (data.paisResidencia || "").trim();
     const asistentes = String(data.asistentes || "").trim();
     const mensaje = (data.mensaje || "").trim();
 
-    if (!nombre || !apellido || !email) {
+    if (!nombre || !apellido || !email || !paisNacimiento || !edad || !ciudadResidencia || !paisResidencia) {
       context.res = {
         status: 400,
-        body: { error: "Nombre, apellido y email son obligatorios." }
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: {
+          error: "Nombre, apellido, email, país de nacimiento, edad, ciudad y país de residencia son obligatorios."
+        }
       };
       return;
     }
@@ -35,6 +44,10 @@ module.exports = async function (context, req) {
       apellido,
       email,
       telefono,
+      paisNacimiento,
+      edad,
+      ciudadResidencia,
+      paisResidencia,
       asistentes,
       mensaje,
       fecha: new Date().toISOString()
