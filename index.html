@@ -146,6 +146,12 @@ input, textarea, select {
   color: #043222;
   outline: none;
   transition: all 0.25s ease;
+  font-size: 1rem;
+}
+
+select {
+  cursor: pointer;
+  appearance: auto;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -421,7 +427,9 @@ button.submit:hover {
       <div class="row">
         <div class="form-group">
           <label>País de nacimiento</label>
-          <input list="paises" id="paisNacimiento" placeholder="Busca tu país" required>
+          <select id="paisNacimiento" required>
+            <option value="">Selecciona tu país</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -433,17 +441,18 @@ button.submit:hover {
       <div class="row">
         <div class="form-group">
           <label>Ciudad donde vive</label>
-          <input list="ciudades" id="ciudadResidencia" placeholder="Busca tu ciudad" required>
+          <select id="ciudadResidencia" required>
+            <option value="">Selecciona tu ciudad</option>
+          </select>
         </div>
 
         <div class="form-group">
           <label>País donde vive</label>
-          <input list="paises" id="paisResidencia" placeholder="Busca tu país" required>
+          <select id="paisResidencia" required>
+            <option value="">Selecciona tu país</option>
+          </select>
         </div>
       </div>
-
-      <datalist id="paises"></datalist>
-      <datalist id="ciudades"></datalist>
 
       <div class="form-group">
         <label>Asistentes</label>
@@ -512,22 +521,21 @@ async function cargarListasFormulario() {
     const paises = await fetch("/data/paises.json").then(res => res.json());
     const ciudades = await fetch("/data/ciudades-es.json").then(res => res.json());
 
-    const datalistPaises = document.getElementById("paises");
-    const datalistCiudades = document.getElementById("ciudades");
+    const paisNacimiento = document.getElementById("paisNacimiento");
+    const paisResidencia = document.getElementById("paisResidencia");
+    const ciudadResidencia = document.getElementById("ciudadResidencia");
 
-    datalistPaises.innerHTML = "";
-    datalistCiudades.innerHTML = "";
+    paisNacimiento.innerHTML = '<option value="">Selecciona tu país</option>';
+    paisResidencia.innerHTML = '<option value="">Selecciona tu país</option>';
+    ciudadResidencia.innerHTML = '<option value="">Selecciona tu ciudad</option>';
 
     paises.forEach(pais => {
-      const option = document.createElement("option");
-      option.value = pais;
-      datalistPaises.appendChild(option);
+      paisNacimiento.appendChild(new Option(pais, pais));
+      paisResidencia.appendChild(new Option(pais, pais));
     });
 
     ciudades.forEach(ciudad => {
-      const option = document.createElement("option");
-      option.value = ciudad;
-      datalistCiudades.appendChild(option);
+      ciudadResidencia.appendChild(new Option(ciudad, ciudad));
     });
 
   } catch (error) {
