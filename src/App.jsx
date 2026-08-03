@@ -12,11 +12,11 @@ function HomePage() {
     <>
       <Hero />
 
-      <section className="section section-featured">
+      <section className="catalog-section section-featured">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Selección de obras</p>
-            <h2>Una mirada al universo de Miriart</h2>
+            <p className="eyebrow">Original paintings</p>
+            <h2>Obras disponibles</h2>
           </div>
 
           <Link className="text-link" to="/obras">
@@ -27,42 +27,18 @@ function HomePage() {
         <ArtworkGrid artworks={artworks} limit={6} />
       </section>
 
-      <section className="split-section">
-        <div className="split-placeholder placeholder-visual">
-          <span>FOTOGRAFÍA DE LA ARTISTA PENDIENTE</span>
-        </div>
-
-        <div className="split-content">
-          <p className="eyebrow">Sobre la artista</p>
-          <h2>Crear desde la sensibilidad y la emoción.</h2>
-
-          <p>
-            Este espacio contendrá la presentación breve de Miriam, su forma de
-            entender el arte, su trayectoria y aquello que inspira sus obras.
-          </p>
-
-          <p>
-            Por ahora dejamos preparado el diseño y la estructura para añadir
-            más adelante la biografía definitiva.
-          </p>
-
-          <Link className="button button-secondary" to="/sobre-mi">
-            Descubrir su historia
-          </Link>
-        </div>
-      </section>
-
-      <section className="commission-section">
-        <p className="eyebrow">Encargos personalizados</p>
-        <h2>Una obra creada especialmente para ti.</h2>
-
-        <p>
-          Retratos, ilustraciones y proyectos personalizados. Aquí explicaremos
-          el proceso, los formatos disponibles, los plazos y las condiciones.
-        </p>
-
-        <Link className="button button-light" to="/encargos">
-          Solicitar información
+      <section className="shop-links">
+        <Link to="/obras">
+          <span>Originales</span>
+          <strong>Piezas unicas en papel y tabla</strong>
+        </Link>
+        <Link to="/obras">
+          <span>Prints</span>
+          <strong>Ediciones fine art</strong>
+        </Link>
+        <Link to="/encargos">
+          <span>Encargos</span>
+          <strong>Retratos y proyectos a medida</strong>
         </Link>
       </section>
     </>
@@ -76,8 +52,8 @@ function WorksPage() {
         <p className="eyebrow">Portfolio</p>
         <h1>Obras</h1>
         <p>
-          Catálogo provisional. Los nombres, imágenes, técnicas, precios y
-          estados se actualizarán con la información definitiva.
+          Catalogo provisional con estructura de tienda: originales, prints,
+          medidas, tecnica, precio y disponibilidad.
         </p>
       </div>
 
@@ -89,22 +65,22 @@ function WorksPage() {
 function AboutPage() {
   return (
     <section className="page-section about-page">
-      <div className="large-placeholder placeholder-visual">
-        <span>FOTOGRAFÍA DE MIRIAM PENDIENTE</span>
+      <div className="large-placeholder artwork-placeholder artwork-placeholder-green">
+        <span>Fotografia de Miriam pendiente</span>
       </div>
 
       <div className="about-copy">
-        <p className="eyebrow">Sobre mí</p>
+        <p className="eyebrow">Sobre mi</p>
         <h1>Miriam · Artista y creadora de Miriart Studio</h1>
 
         <p>
-          Biografía pendiente. Aquí incluiremos su trayectoria, formación,
-          especialidades, exposiciones, proyectos y filosofía artística.
+          Biografia pendiente. Aqui incluiremos su trayectoria, formacion,
+          especialidades, exposiciones, proyectos y filosofia artistica.
         </p>
 
         <p>
-          También podremos incorporar fotografías del estudio, del proceso de
-          creación y de la artista trabajando.
+          Tambien podremos incorporar fotografias del estudio, del proceso de
+          creacion y de la artista trabajando.
         </p>
       </div>
     </section>
@@ -118,34 +94,34 @@ function CommissionsPage() {
         <p className="eyebrow">Proyectos personalizados</p>
         <h1>Encargos</h1>
         <p>
-          Una sección preparada para explicar los tipos de encargos, el
-          proceso, las tarifas orientativas, los tiempos y la entrega.
+          Una seccion preparada para explicar los tipos de encargos, el proceso,
+          las tarifas orientativas, los tiempos y la entrega.
         </p>
       </div>
 
       <div className="process-grid">
         <article>
           <span>01</span>
-          <h2>Cuéntame tu idea</h2>
+          <h2>Cuentame tu idea</h2>
           <p>Formulario, correo o contacto directo.</p>
         </article>
 
         <article>
           <span>02</span>
           <h2>Propuesta</h2>
-          <p>Definición del estilo, formato, precio y plazo.</p>
+          <p>Definicion del estilo, formato, precio y plazo.</p>
         </article>
 
         <article>
           <span>03</span>
-          <h2>Creación</h2>
+          <h2>Creacion</h2>
           <p>Desarrollo de la pieza y seguimiento del proceso.</p>
         </article>
 
         <article>
           <span>04</span>
           <h2>Entrega</h2>
-          <p>Preparación y envío de la obra terminada.</p>
+          <p>Preparacion y envio de la obra terminada.</p>
         </article>
       </div>
     </section>
@@ -161,7 +137,7 @@ function ContactPage() {
 
         <p>
           El correo, WhatsApp, redes sociales y sistema de formulario se
-          configurarán cuando tengamos los datos definitivos.
+          configuraran cuando tengamos los datos definitivos.
         </p>
       </div>
 
@@ -172,7 +148,7 @@ function ContactPage() {
         </label>
 
         <label>
-          Correo electrónico
+          Correo electronico
           <input type="email" placeholder="nombre@correo.com" />
         </label>
 
@@ -180,25 +156,25 @@ function ContactPage() {
           Tipo de consulta
           <select defaultValue="">
             <option value="" disabled>
-              Selecciona una opción
+              Selecciona una opcion
             </option>
             <option>Comprar una obra</option>
             <option>Encargo personalizado</option>
-            <option>Taller o colaboración</option>
+            <option>Taller o colaboracion</option>
             <option>Otra consulta</option>
           </select>
         </label>
 
         <label>
           Mensaje
-          <textarea rows="6" placeholder="Cuéntanos tu idea..." />
+          <textarea rows="6" placeholder="Cuentanos tu idea..." />
         </label>
 
         <button className="button button-primary" type="submit">
           Enviar consulta
         </button>
 
-        <small>Formulario visual. El envío se configurará más adelante.</small>
+        <small>Formulario visual. El envio se configurara mas adelante.</small>
       </form>
     </section>
   );
@@ -207,7 +183,7 @@ function ContactPage() {
 function LegalPage({ title }) {
   return (
     <section className="page-section legal-page">
-      <p className="eyebrow">Información legal</p>
+      <p className="eyebrow">Informacion legal</p>
       <h1>{title}</h1>
       <p>
         Contenido legal pendiente de completar con los datos fiscales,
@@ -229,18 +205,9 @@ function App() {
           <Route path="/sobre-mi" element={<AboutPage />} />
           <Route path="/encargos" element={<CommissionsPage />} />
           <Route path="/contacto" element={<ContactPage />} />
-          <Route
-            path="/aviso-legal"
-            element={<LegalPage title="Aviso legal" />}
-          />
-          <Route
-            path="/privacidad"
-            element={<LegalPage title="Política de privacidad" />}
-          />
-          <Route
-            path="/cookies"
-            element={<LegalPage title="Política de cookies" />}
-          />
+          <Route path="/aviso-legal" element={<LegalPage title="Aviso legal" />} />
+          <Route path="/privacidad" element={<LegalPage title="Politica de privacidad" />} />
+          <Route path="/cookies" element={<LegalPage title="Politica de cookies" />} />
         </Routes>
       </main>
 

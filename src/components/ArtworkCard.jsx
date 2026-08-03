@@ -1,32 +1,30 @@
 function ArtworkCard({ artwork }) {
+  const isUnavailable = artwork.status !== "Disponible";
+
   return (
     <article className="artwork-card">
       <div className="artwork-image">
         {artwork.image ? (
           <img src={artwork.image} alt={artwork.title} />
         ) : (
-          <div className="artwork-placeholder">
-            <span>IMAGEN PENDIENTE</span>
-            <small>{artwork.slug}</small>
+          <div className={`artwork-placeholder artwork-placeholder-${artwork.tone}`}>
+            <span>{artwork.title}</span>
           </div>
         )}
 
-        <span
-          className={`artwork-status ${
-            artwork.status === "Vendida" ? "is-sold" : ""
-          }`}
-        >
+        <span className={`artwork-status ${artwork.status === "Vendida" ? "is-sold" : ""}`}>
           {artwork.status}
         </span>
       </div>
 
       <div className="artwork-information">
-        <div>
-          <p>{artwork.category}</p>
-          <h3>{artwork.title}</h3>
-        </div>
-
-        <span>{artwork.year}</span>
+        <p>{artwork.category}</p>
+        <h3>{artwork.title}</h3>
+        <span>{artwork.technique}</span>
+        <span>
+          {artwork.dimensions} · {artwork.year}
+        </span>
+        <strong>{isUnavailable ? artwork.status : artwork.price}</strong>
       </div>
     </article>
   );

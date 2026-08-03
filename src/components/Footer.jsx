@@ -3,34 +3,41 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="site-footer">
+      <section className="newsletter">
+        <p className="eyebrow">New release updates</p>
+        <h2>Recibe noticias sobre nuevas obras y prints.</h2>
+        <form onSubmit={(event) => event.preventDefault()}>
+          <input type="email" placeholder="Email" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+
       <div className="footer-main">
         <div>
           <p className="footer-brand">Miriart Studio</p>
           <p>
-            Arte, ilustración y encargos personalizados.
+            Arte, ilustracion y encargos personalizados.
             <br />
-            Información definitiva pendiente.
+            Nuevas obras, prints y proyectos especiales.
           </p>
         </div>
 
         <div className="footer-navigation">
-          <Link to="/obras">Obras</Link>
-          <Link to="/sobre-mi">Sobre mí</Link>
+          <Link to="/obras">Originals</Link>
+          <Link to="/obras">Prints</Link>
           <Link to="/encargos">Encargos</Link>
-          <Link to="/contacto">Contacto</Link>
+          <Link to="/sobre-mi">About</Link>
+          <Link to="/contacto">Contact</Link>
         </div>
 
         <div className="footer-social">
-          {/* Sustituir # por los enlaces definitivos */}
           <a href="#" aria-label="Instagram">
             Instagram
           </a>
           <a href="#" aria-label="TikTok">
             TikTok
           </a>
-          <a href="mailto:correo-pendiente@miriartstudio.com">
-            Correo
-          </a>
+          <a href="mailto:correo-pendiente@miriartstudio.com">Email</a>
         </div>
       </div>
 

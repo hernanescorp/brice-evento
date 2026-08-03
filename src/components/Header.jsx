@@ -10,7 +10,6 @@ function Header() {
     <header className="site-header">
       <div className="header-inner">
         <Link to="/" className="brand" onClick={closeMenu}>
-          {/* Sustituir este texto por el logo definitivo */}
           <span className="brand-name">Miriart</span>
           <span className="brand-subtitle">Studio</span>
         </Link>
@@ -18,7 +17,7 @@ function Header() {
         <button
           className="menu-button"
           type="button"
-          aria-label="Abrir menú"
+          aria-label="Abrir menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((current) => !current)}
         >
@@ -28,19 +27,22 @@ function Header() {
 
         <nav className={`main-navigation ${menuOpen ? "is-open" : ""}`}>
           <NavLink to="/" onClick={closeMenu}>
-            Inicio
+            Home
           </NavLink>
           <NavLink to="/obras" onClick={closeMenu}>
-            Obras
+            Originals
           </NavLink>
-          <NavLink to="/sobre-mi" onClick={closeMenu}>
-            Sobre mí
+          <NavLink to="/obras" onClick={closeMenu}>
+            Prints
           </NavLink>
           <NavLink to="/encargos" onClick={closeMenu}>
             Encargos
           </NavLink>
+          <NavLink to="/sobre-mi" onClick={closeMenu}>
+            About
+          </NavLink>
           <NavLink to="/contacto" onClick={closeMenu}>
-            Contacto
+            Contact
           </NavLink>
         </nav>
       </div>

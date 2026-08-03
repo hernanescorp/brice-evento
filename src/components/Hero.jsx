@@ -3,32 +3,36 @@ import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-visual placeholder-visual">
-        <span>IMAGEN PRINCIPAL PENDIENTE</span>
-      </div>
-
       <div className="hero-content">
-        <p className="eyebrow">Arte · ilustración · emoción</p>
+        <p className="eyebrow">Originales · prints · encargos</p>
 
-        <h1>
-          Obras creadas para
-          <span> sentir y recordar.</span>
-        </h1>
+        <h1>Miriart Studio</h1>
 
         <p className="hero-description">
-          Miriart Studio es un espacio creativo dedicado al arte, la
-          ilustración y los encargos personalizados. Este texto se sustituirá
-          por la presentación definitiva de la artista.
+          Arte intimo, ilustracion y piezas personalizadas. Una tienda-galeria
+          sencilla para descubrir obra disponible, prints y proximos lanzamientos.
         </p>
 
         <div className="hero-actions">
           <Link className="button button-primary" to="/obras">
-            Descubrir las obras
+            Ver obras
           </Link>
 
           <Link className="text-link" to="/sobre-mi">
-            Conocer a la artista
+            Sobre la artista
           </Link>
+        </div>
+      </div>
+
+      <div className="hero-feature">
+        <div className="featured-artwork artwork-placeholder artwork-placeholder-rose">
+          <span>Eco interior</span>
+        </div>
+
+        <div className="featured-caption">
+          <span>Obra destacada</span>
+          <strong>Eco interior</strong>
+          <small>Acuarela y tinta sobre papel · EUR 420,00</small>
         </div>
       </div>
     </section>
