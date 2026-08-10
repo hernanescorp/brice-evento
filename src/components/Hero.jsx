@@ -26,10 +26,15 @@ function Hero() {
       </div>
 
       <div className="hero-feature">
-        <div className="featured-artwork hero-photo">
-          <img
-            src="/images/miriam-hero.jpg"
-            alt="Miriam rodeada de pinturas y retratos personalizados"
+        <div className="featured-artwork hero-media">
+          <video
+            src="/videos/hero-live-painting.mp4"
+            poster="/images/miriam-hero.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="Miriam pintando una obra en directo"
           />
         </div>
 
