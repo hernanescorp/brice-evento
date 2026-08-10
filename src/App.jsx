@@ -15,38 +15,38 @@ function HomePage() {
       <section className="catalog-section section-featured">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Servicios para celebraciones</p>
-            <h2>Arte en vivo que acompana el momento.</h2>
+            <p className="eyebrow">Que puedes contratar</p>
+            <h2>Una obra pintada para recordar el dia.</h2>
           </div>
 
           <Link className="text-link" to="/contacto">
-            Pedir disponibilidad
+            Consultar fecha
           </Link>
         </div>
 
         <div className="event-services">
           <article>
             <span>01</span>
-            <h3>Bodas</h3>
+            <h3>La escena</h3>
             <p>
-              Pintura en directo de la ceremonia, el coctel, el baile o una
-              escena especial elegida por la pareja.
+              Elegimos el momento que quieres conservar: ceremonia, coctel,
+              primer baile, pareja o ambiente de la celebracion.
             </p>
           </article>
           <article>
             <span>02</span>
-            <h3>Invitados</h3>
+            <h3>El evento</h3>
             <p>
-              Pequenos retratos o ilustraciones rapidas para que cada persona
-              se lleve un recuerdo hecho a mano.
+              Miriam pinta durante la boda para que el proceso tambien forme
+              parte de la experiencia de los invitados.
             </p>
           </article>
           <article>
             <span>03</span>
-            <h3>Eventos privados</h3>
+            <h3>La obra</h3>
             <p>
-              Cumpleanos, aniversarios, fiestas familiares o eventos de marca
-              con una intervencion artistica cercana.
+              Te llevas una pieza final hecha a mano, personal y conectada con
+              lo que paso ese dia.
             </p>
           </article>
         </div>
@@ -55,30 +55,26 @@ function HomePage() {
       <section className="catalog-section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Portfolio</p>
-            <h2>Una muestra del estilo de Miriam.</h2>
+            <p className="eyebrow">Bodas ya pintadas</p>
+            <h2>Cuatro ejemplos reales para imaginar la tuya.</h2>
           </div>
 
           <Link className="text-link" to="/obras">
-            Ver portfolio
+            Ver las 4 obras
           </Link>
         </div>
 
-        <ArtworkGrid artworks={artworks} limit={3} />
+        <ArtworkGrid artworks={artworks} />
       </section>
 
-      <section className="shop-links">
-        <Link to="/contacto">
-          <span>Reserva</span>
-          <strong>Consulta si tu fecha esta disponible</strong>
-        </Link>
-        <Link to="/encargos">
-          <span>Experiencia</span>
-          <strong>Pintura en vivo durante la celebracion</strong>
-        </Link>
-        <Link to="/obras">
-          <span>Portfolio</span>
-          <strong>Color, detalle y sensibilidad para inspirarte</strong>
+      <section className="cta-band">
+        <div>
+          <p className="eyebrow">Reservas</p>
+          <h2>Si ya tienes fecha, lo importante es comprobar disponibilidad.</h2>
+        </div>
+
+        <Link className="button button-primary" to="/contacto">
+          Escribir a Miriam
         </Link>
       </section>
     </>
@@ -90,10 +86,10 @@ function WorksPage() {
     <section className="page-section">
       <div className="page-header">
         <p className="eyebrow">Portfolio</p>
-        <h1>Obras y estilo</h1>
+        <h1>Bodas pintadas</h1>
         <p>
-          Una seleccion visual para conocer el trazo, el color y la forma de
-          mirar de Miriam antes de llevar su pintura a tu evento.
+          Una galeria breve con obras realizadas para bodas. La web queda
+          preparada para crecer cuando tengamos mas fotos reales.
         </p>
       </div>
 
@@ -105,8 +101,8 @@ function WorksPage() {
 function AboutPage() {
   return (
     <section className="page-section about-page">
-      <div className="large-placeholder artwork-placeholder artwork-placeholder-green">
-        <span>Miriam pintando en directo</span>
+      <div className="about-photo">
+        <img src="/images/miriam-hero.jpg" alt="Miriam junto a varias obras" />
       </div>
 
       <div className="about-copy">
@@ -132,12 +128,11 @@ function CommissionsPage() {
   return (
     <section className="page-section">
       <div className="page-header">
-        <p className="eyebrow">Como funciona</p>
-        <h1>Pintura en directo para tu evento</h1>
+        <p className="eyebrow">Eventos</p>
+        <h1>Un servicio pensado para bodas.</h1>
         <p>
-          El servicio se adapta al tipo de celebracion, al espacio y al ritmo
-          del dia. La obra se empieza durante el evento y puede terminarse con
-          los ultimos detalles en estudio si el formato lo necesita.
+          La propuesta es sencilla: Miriam asiste a la celebracion, pinta una
+          escena acordada y convierte el momento en una obra original.
         </p>
       </div>
 

@@ -26,8 +26,11 @@ function Hero() {
       </div>
 
       <div className="hero-feature">
-        <div className="featured-artwork artwork-placeholder artwork-placeholder-rose">
-          <span>Tu boda pintada en vivo</span>
+        <div className="featured-artwork hero-photo">
+          <img
+            src="/images/miriam-hero.jpg"
+            alt="Miriam rodeada de pinturas y retratos personalizados"
+          />
         </div>
 
         <div className="featured-caption">

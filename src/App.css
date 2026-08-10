@@ -192,6 +192,18 @@
   min-height: min(68vw, 690px);
 }
 
+.hero-photo {
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: min(68vw, 690px);
+  object-fit: cover;
+  object-position: center 42%;
+}
+
 .featured-caption {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -242,7 +254,7 @@
 
 .artwork-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 56px 22px;
 }
 
@@ -391,6 +403,30 @@
   border-left: 1px solid var(--line);
 }
 
+.cta-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 34px;
+  align-items: center;
+  width: min(100% - 40px, 1420px);
+  margin: 0 auto clamp(74px, 10vw, 140px);
+  padding: clamp(38px, 6vw, 72px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(110deg, rgba(254, 215, 100, 0.34), transparent 48%),
+    rgba(132, 208, 213, 0.16);
+}
+
+.cta-band h2 {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.04;
+}
+
 .shop-links a {
   display: grid;
   gap: 14px;
@@ -444,6 +480,19 @@
 
 .large-placeholder {
   min-height: 700px;
+}
+
+.about-photo {
+  min-height: 700px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  object-position: center 42%;
 }
 
 .about-copy p:not(.eyebrow),
@@ -719,6 +768,10 @@
   .event-services {
     grid-template-columns: 1fr;
   }
+
+  .cta-band {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -727,6 +780,7 @@
   .page-section,
   .hero,
   .shop-links,
+  .cta-band,
   .footer-main,
   .footer-bottom {
     width: min(100% - 30px, 1420px);
@@ -808,6 +862,14 @@
 
   .large-placeholder {
     min-height: 520px;
+  }
+
+  .about-photo {
+    min-height: 520px;
+  }
+
+  .about-photo img {
+    height: 520px;
   }
 
   .process-grid article {
