@@ -4,11 +4,11 @@ function Footer() {
   return (
     <footer className="site-footer">
       <section className="newsletter">
-        <p className="eyebrow">New release updates</p>
-        <h2>Recibe noticias sobre nuevas obras y prints.</h2>
+        <p className="eyebrow">Agenda de eventos</p>
+        <h2>Pregunta por la disponibilidad para tu fecha.</h2>
         <form onSubmit={(event) => event.preventDefault()}>
           <input type="email" placeholder="Email" aria-label="Email" />
-          <button type="submit">Subscribe</button>
+          <button type="submit">Contactar</button>
         </form>
       </section>
 
@@ -16,18 +16,17 @@ function Footer() {
         <div>
           <p className="footer-brand">Miriart Studio</p>
           <p>
-            Arte, ilustracion y encargos personalizados.
+            Pintura en directo para bodas, celebraciones y eventos.
             <br />
-            Nuevas obras, prints y proyectos especiales.
+            Recuerdos artisticos creados mientras sucede el momento.
           </p>
         </div>
 
         <div className="footer-navigation">
-          <Link to="/obras">Originals</Link>
-          <Link to="/obras">Prints</Link>
-          <Link to="/encargos">Encargos</Link>
-          <Link to="/sobre-mi">About</Link>
-          <Link to="/contacto">Contact</Link>
+          <Link to="/encargos">Eventos</Link>
+          <Link to="/obras">Portfolio</Link>
+          <Link to="/sobre-mi">Sobre mi</Link>
+          <Link to="/contacto">Contacto</Link>
         </div>
 
         <div className="footer-social">
@@ -42,7 +41,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Miriart Studio</span>
+        <span>&copy; {new Date().getFullYear()} Miriart Studio</span>
 
         <div>
           <Link to="/aviso-legal">Aviso legal</Link>

@@ -27,13 +27,14 @@
 }
 
 .brand-name {
+  color: var(--miri-blue);
   font-family: var(--serif);
   font-size: 1.85rem;
   font-weight: 500;
 }
 
 .brand-subtitle {
-  color: var(--muted);
+  color: var(--miri-pink);
   font-size: 0.67rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -61,7 +62,7 @@
   left: 0;
   height: 1px;
   content: "";
-  background: var(--text);
+  background: var(--miri-turquoise);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 180ms ease;
@@ -112,7 +113,7 @@
 
 .eyebrow {
   margin: 0 0 16px;
-  color: var(--muted);
+  color: var(--miri-blue);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.17em;
@@ -152,7 +153,7 @@
   justify-content: center;
   min-height: 46px;
   padding: 0 24px;
-  border: 1px solid var(--text);
+  border: 1px solid var(--miri-blue);
   cursor: pointer;
   background: transparent;
   font-size: 0.76rem;
@@ -166,20 +167,20 @@
 
 .button-primary {
   color: #ffffff;
-  background: var(--text);
+  background: var(--miri-blue);
 }
 
 .button-secondary:hover,
 .button-primary:hover {
-  color: #ffffff;
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--text);
+  background: var(--miri-yellow);
+  border-color: var(--miri-yellow);
 }
 
 .text-link {
   padding-bottom: 4px;
   border-bottom: 1px solid currentColor;
-  color: var(--text);
+  color: var(--miri-pink);
   font-size: 0.86rem;
 }
 
@@ -288,44 +289,44 @@
 
 .artwork-placeholder-rose {
   --artwork-background:
-    radial-gradient(circle at 36% 30%, #e7afa7 0 11%, transparent 12% 100%),
-    radial-gradient(circle at 63% 60%, #6f3e4a 0 14%, transparent 15% 100%),
-    #dcc9bd;
+    radial-gradient(circle at 36% 30%, var(--miri-pink-light) 0 11%, transparent 12% 100%),
+    radial-gradient(circle at 63% 60%, var(--miri-pink) 0 14%, transparent 15% 100%),
+    var(--miri-yellow-light);
 }
 
 .artwork-placeholder-green {
   --artwork-background:
-    radial-gradient(circle at 64% 28%, #b8c5a4 0 12%, transparent 13% 100%),
-    radial-gradient(circle at 36% 66%, #405246 0 16%, transparent 17% 100%),
-    #d8d8c9;
+    radial-gradient(circle at 64% 28%, var(--miri-turquoise-light) 0 12%, transparent 13% 100%),
+    radial-gradient(circle at 36% 66%, var(--miri-blue) 0 16%, transparent 17% 100%),
+    var(--miri-white);
 }
 
 .artwork-placeholder-blue {
   --artwork-background:
-    radial-gradient(circle at 35% 34%, #aec5ca 0 13%, transparent 14% 100%),
-    radial-gradient(circle at 70% 68%, #405367 0 14%, transparent 15% 100%),
-    #d7dce0;
+    radial-gradient(circle at 35% 34%, var(--miri-turquoise-light) 0 13%, transparent 14% 100%),
+    radial-gradient(circle at 70% 68%, var(--miri-blue) 0 14%, transparent 15% 100%),
+    var(--miri-yellow-light);
 }
 
 .artwork-placeholder-gold {
   --artwork-background:
-    radial-gradient(circle at 34% 67%, #cfae65 0 12%, transparent 13% 100%),
-    radial-gradient(circle at 70% 31%, #7e6642 0 14%, transparent 15% 100%),
-    #e7dcc5;
+    radial-gradient(circle at 34% 67%, var(--miri-yellow) 0 12%, transparent 13% 100%),
+    radial-gradient(circle at 70% 31%, var(--miri-pink) 0 14%, transparent 15% 100%),
+    var(--miri-white);
 }
 
 .artwork-placeholder-ink {
   --artwork-background:
-    radial-gradient(circle at 66% 30%, #4a4645 0 15%, transparent 16% 100%),
-    radial-gradient(circle at 38% 65%, #bfb7ad 0 12%, transparent 13% 100%),
-    #d6d0c9;
+    radial-gradient(circle at 66% 30%, var(--miri-blue) 0 15%, transparent 16% 100%),
+    radial-gradient(circle at 38% 65%, var(--miri-pink-light) 0 12%, transparent 13% 100%),
+    var(--miri-yellow-light);
 }
 
 .artwork-placeholder-clay {
   --artwork-background:
-    radial-gradient(circle at 30% 28%, #c68f75 0 13%, transparent 14% 100%),
-    radial-gradient(circle at 68% 66%, #7f4f45 0 14%, transparent 15% 100%),
-    #e5d1c4;
+    radial-gradient(circle at 30% 28%, var(--miri-pink) 0 13%, transparent 14% 100%),
+    radial-gradient(circle at 68% 66%, var(--miri-turquoise) 0 14%, transparent 15% 100%),
+    var(--miri-white);
 }
 
 .artwork-status {
@@ -334,7 +335,7 @@
   right: 12px;
   padding: 7px 9px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(254, 215, 100, 0.92);
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -397,6 +398,13 @@
   padding: 28px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.shop-links a:hover {
+  background: var(--miri-yellow-light);
 }
 
 .shop-links span {
@@ -475,6 +483,45 @@
 .process-grid p {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.event-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.event-services article {
+  min-height: 300px;
+  padding: 30px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, rgba(132, 208, 213, 0.2), transparent 42%),
+    #ffffff;
+}
+
+.event-services span {
+  color: var(--miri-pink);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.event-services h3 {
+  max-width: 290px;
+  margin: 72px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 2.4vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.event-services p {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .contact-form {
@@ -578,9 +625,9 @@
 .newsletter button {
   min-height: 46px;
   padding: 0 18px;
-  border: 1px solid var(--text);
+  border: 1px solid var(--miri-blue);
   color: #ffffff;
-  background: var(--text);
+  background: var(--miri-blue);
   cursor: pointer;
   font-size: 0.75rem;
   font-weight: 600;
@@ -668,6 +715,10 @@
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .event-services {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -747,6 +798,7 @@
 
   .artwork-grid,
   .shop-links,
+  .event-services,
   .process-grid,
   .footer-main,
   .footer-bottom,

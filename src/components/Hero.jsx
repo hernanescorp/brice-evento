@@ -4,35 +4,36 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <p className="eyebrow">Originales · prints · encargos</p>
+        <p className="eyebrow">Pintura en directo para bodas y eventos</p>
 
         <h1>Miriart Studio</h1>
 
         <p className="hero-description">
-          Arte intimo, ilustracion y piezas personalizadas. Una tienda-galeria
-          sencilla para descubrir obra disponible, prints y proximos lanzamientos.
+          Miriam convierte tu celebracion en una obra hecha durante el evento:
+          momentos, invitados y detalles pintados con una mirada sensible,
+          colorida y muy personal.
         </p>
 
         <div className="hero-actions">
-          <Link className="button button-primary" to="/obras">
-            Ver obras
+          <Link className="button button-primary" to="/contacto">
+            Consultar disponibilidad
           </Link>
 
-          <Link className="text-link" to="/sobre-mi">
-            Sobre la artista
+          <Link className="text-link" to="/encargos">
+            Ver servicios para eventos
           </Link>
         </div>
       </div>
 
       <div className="hero-feature">
         <div className="featured-artwork artwork-placeholder artwork-placeholder-rose">
-          <span>Eco interior</span>
+          <span>Tu boda pintada en vivo</span>
         </div>
 
         <div className="featured-caption">
-          <span>Obra destacada</span>
-          <strong>Eco interior</strong>
-          <small>Acuarela y tinta sobre papel · EUR 420,00</small>
+          <span>Live painting</span>
+          <strong>Un recuerdo unico del dia</strong>
+          <small>Bodas, fiestas privadas y celebraciones especiales</small>
         </div>
       </div>
     </section>

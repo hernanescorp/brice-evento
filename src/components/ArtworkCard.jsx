@@ -1,6 +1,4 @@
 function ArtworkCard({ artwork }) {
-  const isUnavailable = artwork.status !== "Disponible";
-
   return (
     <article className="artwork-card">
       <div className="artwork-image">
@@ -12,7 +10,7 @@ function ArtworkCard({ artwork }) {
           </div>
         )}
 
-        <span className={`artwork-status ${artwork.status === "Vendida" ? "is-sold" : ""}`}>
+        <span className={`artwork-status ${artwork.status === "Reservado" ? "is-sold" : ""}`}>
           {artwork.status}
         </span>
       </div>
@@ -22,9 +20,9 @@ function ArtworkCard({ artwork }) {
         <h3>{artwork.title}</h3>
         <span>{artwork.technique}</span>
         <span>
-          {artwork.dimensions} · {artwork.year}
+          {artwork.dimensions} - {artwork.year}
         </span>
-        <strong>{isUnavailable ? artwork.status : artwork.price}</strong>
+        <strong>{artwork.price}</strong>
       </div>
     </article>
   );

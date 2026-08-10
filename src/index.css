@@ -2,19 +2,28 @@
 
 :root {
   font-family: "DM Sans", sans-serif;
-  color: #191716;
+  color: #263f48;
   background: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  --background: #ffffff;
-  --surface: #f7f5f0;
-  --text: #191716;
-  --muted: #6d6862;
-  --line: rgba(25, 23, 22, 0.14);
-  --accent: #5e6f58;
-  --accent-dark: #344431;
-  --dark: #191716;
+  --miri-blue: #3B8FA3;
+  --miri-turquoise: #06B9B9;
+  --miri-turquoise-light: #84D0D5;
+  --miri-pink: #FF7276;
+  --miri-pink-light: #FFAFBB;
+  --miri-yellow: #FED764;
+  --miri-yellow-light: #FAEEB1;
+  --miri-white: #FFFFFF;
+
+  --background: var(--miri-white);
+  --surface: #fff8df;
+  --text: #263f48;
+  --muted: #65777d;
+  --line: rgba(59, 143, 163, 0.24);
+  --accent: var(--miri-pink);
+  --accent-dark: var(--miri-blue);
+  --dark: #263f48;
   --serif: "Playfair Display", serif;
 }
 
@@ -64,6 +73,6 @@ a {
 }
 
 ::selection {
-  color: #ffffff;
-  background: var(--accent);
+  color: var(--text);
+  background: var(--miri-yellow);
 }

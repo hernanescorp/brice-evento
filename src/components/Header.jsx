@@ -27,22 +27,19 @@ function Header() {
 
         <nav className={`main-navigation ${menuOpen ? "is-open" : ""}`}>
           <NavLink to="/" onClick={closeMenu}>
-            Home
-          </NavLink>
-          <NavLink to="/obras" onClick={closeMenu}>
-            Originals
-          </NavLink>
-          <NavLink to="/obras" onClick={closeMenu}>
-            Prints
+            Inicio
           </NavLink>
           <NavLink to="/encargos" onClick={closeMenu}>
-            Encargos
+            Eventos
+          </NavLink>
+          <NavLink to="/obras" onClick={closeMenu}>
+            Portfolio
           </NavLink>
           <NavLink to="/sobre-mi" onClick={closeMenu}>
-            About
+            Sobre mi
           </NavLink>
           <NavLink to="/contacto" onClick={closeMenu}>
-            Contact
+            Contacto
           </NavLink>
         </nav>
       </div>

@@ -15,30 +15,70 @@ function HomePage() {
       <section className="catalog-section section-featured">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Original paintings</p>
-            <h2>Obras disponibles</h2>
+            <p className="eyebrow">Servicios para celebraciones</p>
+            <h2>Arte en vivo que acompana el momento.</h2>
           </div>
 
-          <Link className="text-link" to="/obras">
-            Ver todas las obras
+          <Link className="text-link" to="/contacto">
+            Pedir disponibilidad
           </Link>
         </div>
 
-        <ArtworkGrid artworks={artworks} limit={6} />
+        <div className="event-services">
+          <article>
+            <span>01</span>
+            <h3>Bodas</h3>
+            <p>
+              Pintura en directo de la ceremonia, el coctel, el baile o una
+              escena especial elegida por la pareja.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Invitados</h3>
+            <p>
+              Pequenos retratos o ilustraciones rapidas para que cada persona
+              se lleve un recuerdo hecho a mano.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Eventos privados</h3>
+            <p>
+              Cumpleanos, aniversarios, fiestas familiares o eventos de marca
+              con una intervencion artistica cercana.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="catalog-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Portfolio</p>
+            <h2>Una muestra del estilo de Miriam.</h2>
+          </div>
+
+          <Link className="text-link" to="/obras">
+            Ver portfolio
+          </Link>
+        </div>
+
+        <ArtworkGrid artworks={artworks} limit={3} />
       </section>
 
       <section className="shop-links">
-        <Link to="/obras">
-          <span>Originales</span>
-          <strong>Piezas unicas en papel y tabla</strong>
-        </Link>
-        <Link to="/obras">
-          <span>Prints</span>
-          <strong>Ediciones fine art</strong>
+        <Link to="/contacto">
+          <span>Reserva</span>
+          <strong>Consulta si tu fecha esta disponible</strong>
         </Link>
         <Link to="/encargos">
-          <span>Encargos</span>
-          <strong>Retratos y proyectos a medida</strong>
+          <span>Experiencia</span>
+          <strong>Pintura en vivo durante la celebracion</strong>
+        </Link>
+        <Link to="/obras">
+          <span>Portfolio</span>
+          <strong>Color, detalle y sensibilidad para inspirarte</strong>
         </Link>
       </section>
     </>
@@ -50,10 +90,10 @@ function WorksPage() {
     <section className="page-section">
       <div className="page-header">
         <p className="eyebrow">Portfolio</p>
-        <h1>Obras</h1>
+        <h1>Obras y estilo</h1>
         <p>
-          Catalogo provisional con estructura de tienda: originales, prints,
-          medidas, tecnica, precio y disponibilidad.
+          Una seleccion visual para conocer el trazo, el color y la forma de
+          mirar de Miriam antes de llevar su pintura a tu evento.
         </p>
       </div>
 
@@ -66,21 +106,22 @@ function AboutPage() {
   return (
     <section className="page-section about-page">
       <div className="large-placeholder artwork-placeholder artwork-placeholder-green">
-        <span>Fotografia de Miriam pendiente</span>
+        <span>Miriam pintando en directo</span>
       </div>
 
       <div className="about-copy">
         <p className="eyebrow">Sobre mi</p>
-        <h1>Miriam · Artista y creadora de Miriart Studio</h1>
+        <h1>Miriam, artista detras de Miriart Studio</h1>
 
         <p>
-          Biografia pendiente. Aqui incluiremos su trayectoria, formacion,
-          especialidades, exposiciones, proyectos y filosofia artistica.
+          Miriam crea piezas con una mirada luminosa, cercana y emocional. Su
+          trabajo encaja especialmente bien en bodas y celebraciones donde el
+          recuerdo no solo se fotografia: tambien se pinta.
         </p>
 
         <p>
-          Tambien podremos incorporar fotografias del estudio, del proceso de
-          creacion y de la artista trabajando.
+          En cada evento observa la escena, el ambiente y los detalles que hacen
+          unico el dia para convertirlos en una obra personal y llena de vida.
         </p>
       </div>
     </section>
@@ -91,37 +132,38 @@ function CommissionsPage() {
   return (
     <section className="page-section">
       <div className="page-header">
-        <p className="eyebrow">Proyectos personalizados</p>
-        <h1>Encargos</h1>
+        <p className="eyebrow">Como funciona</p>
+        <h1>Pintura en directo para tu evento</h1>
         <p>
-          Una seccion preparada para explicar los tipos de encargos, el proceso,
-          las tarifas orientativas, los tiempos y la entrega.
+          El servicio se adapta al tipo de celebracion, al espacio y al ritmo
+          del dia. La obra se empieza durante el evento y puede terminarse con
+          los ultimos detalles en estudio si el formato lo necesita.
         </p>
       </div>
 
       <div className="process-grid">
         <article>
           <span>01</span>
-          <h2>Cuentame tu idea</h2>
-          <p>Formulario, correo o contacto directo.</p>
+          <h2>Fecha y lugar</h2>
+          <p>Cuentales la fecha, ciudad, horario y tipo de celebracion.</p>
         </article>
 
         <article>
           <span>02</span>
-          <h2>Propuesta</h2>
-          <p>Definicion del estilo, formato, precio y plazo.</p>
+          <h2>Escena elegida</h2>
+          <p>Definimos que momento se pintara y el formato de la obra.</p>
         </article>
 
         <article>
           <span>03</span>
-          <h2>Creacion</h2>
-          <p>Desarrollo de la pieza y seguimiento del proceso.</p>
+          <h2>Pintura en vivo</h2>
+          <p>Miriam trabaja en el evento para crear una experiencia visible.</p>
         </article>
 
         <article>
           <span>04</span>
-          <h2>Entrega</h2>
-          <p>Preparacion y envio de la obra terminada.</p>
+          <h2>Recuerdo final</h2>
+          <p>La pieza queda como memoria artistica de ese dia especial.</p>
         </article>
       </div>
     </section>
@@ -133,11 +175,12 @@ function ContactPage() {
     <section className="page-section contact-page">
       <div>
         <p className="eyebrow">Contacto</p>
-        <h1>Hablemos de tu idea.</h1>
+        <h1>Hablemos de tu evento.</h1>
 
         <p>
-          El correo, WhatsApp, redes sociales y sistema de formulario se
-          configuraran cuando tengamos los datos definitivos.
+          Envia los detalles principales de la celebracion y Miriam podra
+          preparar una propuesta adaptada a la fecha, el lugar y el tipo de
+          experiencia que tienes en mente.
         </p>
       </div>
 
@@ -153,21 +196,26 @@ function ContactPage() {
         </label>
 
         <label>
-          Tipo de consulta
+          Tipo de evento
           <select defaultValue="">
             <option value="" disabled>
               Selecciona una opcion
             </option>
-            <option>Comprar una obra</option>
-            <option>Encargo personalizado</option>
-            <option>Taller o colaboracion</option>
-            <option>Otra consulta</option>
+            <option>Boda</option>
+            <option>Celebracion privada</option>
+            <option>Evento de marca</option>
+            <option>Otro evento</option>
           </select>
         </label>
 
         <label>
+          Fecha y ciudad
+          <input type="text" placeholder="Ej. 14/09/2026, Madrid" />
+        </label>
+
+        <label>
           Mensaje
-          <textarea rows="6" placeholder="Cuentanos tu idea..." />
+          <textarea rows="6" placeholder="Cuentanos que te gustaria pintar..." />
         </label>
 
         <button className="button button-primary" type="submit">
