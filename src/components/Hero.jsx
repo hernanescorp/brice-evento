@@ -29,11 +29,11 @@ function Hero() {
         <div className="featured-artwork hero-media">
           <video
             src="/videos/hero-live-painting.mp4"
-            poster="/images/miriam-hero.jpg"
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
             aria-label="Miriam pintando una obra en directo"
           />
         </div>
