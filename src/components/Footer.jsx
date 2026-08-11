@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="site-footer">
       <section className="newsletter">
-        <p className="eyebrow">Agenda de eventos</p>
+        <p className="eyebrow">Agenda de servicios</p>
         <h2>Pregunta por la disponibilidad para tu fecha.</h2>
         <form onSubmit={(event) => event.preventDefault()}>
           <input type="email" placeholder="Email" aria-label="Email" />
@@ -23,7 +23,7 @@ function Footer() {
         </div>
 
         <div className="footer-navigation">
-          <Link to="/encargos">Eventos</Link>
+          <Link to="/servicios">Servicios</Link>
           <Link to="/obras">Portfolio</Link>
           <Link to="/sobre-mi">Sobre mi</Link>
           <Link to="/contacto">Contacto</Link>

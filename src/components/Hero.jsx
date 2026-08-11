@@ -19,8 +19,8 @@ function Hero() {
             Consultar disponibilidad
           </Link>
 
-          <Link className="text-link" to="/encargos">
-            Ver servicios para eventos
+          <Link className="text-link" to="/servicios">
+            Ver servicios
           </Link>
         </div>
       </div>
@@ -40,7 +40,7 @@ function Hero() {
 
         <div className="featured-caption">
           <span>Live painting</span>
-          <strong>Un recuerdo unico del dia</strong>
+          <strong>Un recuerdo para los invitados</strong>
           <small>Bodas, fiestas privadas y celebraciones especiales</small>
         </div>
       </div>

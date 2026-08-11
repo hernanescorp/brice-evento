@@ -29,8 +29,8 @@ function Header() {
           <NavLink to="/" onClick={closeMenu}>
             Inicio
           </NavLink>
-          <NavLink to="/encargos" onClick={closeMenu}>
-            Eventos
+          <NavLink to="/servicios" onClick={closeMenu}>
+            Servicios
           </NavLink>
           <NavLink to="/obras" onClick={closeMenu}>
             Portfolio

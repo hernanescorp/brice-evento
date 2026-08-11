@@ -15,8 +15,8 @@ function HomePage() {
       <section className="catalog-section section-featured">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Que puedes contratar</p>
-            <h2>Una obra pintada para recordar el dia.</h2>
+            <p className="eyebrow">Servicios</p>
+            <h2>Un recuerdo para los invitados.</h2>
           </div>
 
           <Link className="text-link" to="/contacto">
@@ -27,26 +27,26 @@ function HomePage() {
         <div className="event-services">
           <article>
             <span>01</span>
-            <h3>La escena</h3>
+            <h3>Un recuerdo para los invitados</h3>
             <p>
-              Elegimos el momento que quieres conservar: ceremonia, coctel,
-              primer baile, pareja o ambiente de la celebracion.
+              Ilustraciones hechas en directo para que cada persona se lleve un
+              detalle unico del evento.
             </p>
           </article>
           <article>
             <span>02</span>
-            <h3>El evento</h3>
+            <h3>Una obra pintada de los novios</h3>
             <p>
-              Miriam pinta durante la boda para que el proceso tambien forme
-              parte de la experiencia de los invitados.
+              Una pieza original centrada en la pareja, creada durante la
+              celebracion como recuerdo artistico del dia.
             </p>
           </article>
           <article>
             <span>03</span>
-            <h3>La obra</h3>
+            <h3>Un encargo personalizado</h3>
             <p>
-              Te llevas una pieza final hecha a mano, personal y conectada con
-              lo que paso ese dia.
+              Una ilustracion o pintura a medida para regalar, decorar o
+              conservar una escena especial fuera del evento.
             </p>
           </article>
         </div>
@@ -128,37 +128,37 @@ function CommissionsPage() {
   return (
     <section className="page-section">
       <div className="page-header">
-        <p className="eyebrow">Eventos</p>
-        <h1>Un servicio pensado para bodas.</h1>
+        <p className="eyebrow">Servicios</p>
+        <h1>Tres formas de convertir el momento en arte.</h1>
         <p>
-          La propuesta es sencilla: Miriam asiste a la celebracion, pinta una
-          escena acordada y convierte el momento en una obra original.
+          Puedes elegir ilustraciones en directo para invitados, una obra
+          pintada de los novios o un encargo personalizado creado a medida.
         </p>
       </div>
 
       <div className="process-grid">
         <article>
           <span>01</span>
-          <h2>Fecha y lugar</h2>
-          <p>Cuentales la fecha, ciudad, horario y tipo de celebracion.</p>
+          <h2>Un recuerdo para los invitados</h2>
+          <p>Ilustraciones pequenas, hechas a mano durante el evento y pensadas como detalle personal.</p>
         </article>
 
         <article>
           <span>02</span>
-          <h2>Escena elegida</h2>
-          <p>Definimos que momento se pintara y el formato de la obra.</p>
+          <h2>Una obra pintada de los novios</h2>
+          <p>Una pintura original de la pareja, realizada en directo como recuerdo central de la boda.</p>
         </article>
 
         <article>
           <span>03</span>
-          <h2>Pintura en vivo</h2>
-          <p>Miriam trabaja en el evento para crear una experiencia visible.</p>
+          <h2>Un encargo personalizado</h2>
+          <p>Una pieza creada por encargo para regalar, decorar o recordar una historia concreta.</p>
         </article>
 
         <article>
           <span>04</span>
-          <h2>Recuerdo final</h2>
-          <p>La pieza queda como memoria artistica de ese dia especial.</p>
+          <h2>Como funciona</h2>
+          <p>Se adapta el formato, el tiempo y el estilo segun el tipo de servicio que elijas.</p>
         </article>
       </div>
     </section>
@@ -246,6 +246,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/obras" element={<WorksPage />} />
           <Route path="/sobre-mi" element={<AboutPage />} />
+          <Route path="/servicios" element={<CommissionsPage />} />
           <Route path="/encargos" element={<CommissionsPage />} />
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/aviso-legal" element={<LegalPage title="Aviso legal" />} />
