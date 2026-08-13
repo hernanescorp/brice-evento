@@ -245,14 +245,17 @@ function AboutPage() {
         <h1>Miriam, artista detras de Miriart Studio</h1>
 
         <p>
-          Miriam crea piezas con una mirada luminosa, cercana y emocional. Su
-          trabajo encaja especialmente bien en bodas y celebraciones donde el
-          recuerdo no solo se fotografia: tambien se pinta.
+          El arte siempre ha formado parte de la vida de Miriam desde su
+          infancia, convirtiendose con el tiempo en una forma de expresion y en
+          parte de su identidad. No hay dia que su madre no la recuerde, en
+          todas sus excursiones, llevando consigo un bloc de dibujo y unos
+          lapices para pasarse dibujando las horas muertas.
         </p>
 
         <p>
-          En cada evento observa la escena, el ambiente y los detalles que hacen
-          unico el dia para convertirlos en una obra personal y llena de vida.
+          Se graduo en Bellas Artes en 2016 y, desde entonces, ha seguido
+          desarrollando su estilo y explorando nuevas formas de crear,
+          conectando especialmente con el retrato y la figura.
         </p>
 
         <p>

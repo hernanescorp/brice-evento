@@ -4,8 +4,12 @@ function Footer() {
   return (
     <footer className="site-footer">
       <section className="newsletter">
-        <p className="eyebrow">Agenda de servicios</p>
-        <h2>Pregunta por la disponibilidad para tu fecha.</h2>
+        <div className="newsletter-kicker">
+          <span>Encargos personalizados</span>
+        </div>
+
+        <h2>Cuentame tu idea</h2>
+
         <form onSubmit={(event) => event.preventDefault()}>
           <input type="email" placeholder="Email" aria-label="Email" />
           <button type="submit">Contactar</button>

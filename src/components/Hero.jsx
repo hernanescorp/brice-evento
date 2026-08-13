@@ -9,10 +9,9 @@ function Hero() {
         <h1>Miriart Studio</h1>
 
         <p className="hero-description">
-          Miriam convierte tu celebracion en una obra hecha durante el evento:
-          momentos, invitados y detalles pintados con una mirada sensible.
-          Ilustradora de bodas con sede en Bizkaia y disponible para
-          desplazamientos.
+          Miriam transforma tu celebracion en un recuerdo especial. Personas,
+          emociones y pequenos detalles cobran vida en obras unicas, creadas
+          con una mirada sensible, colorida y muy personal.
         </p>
 
         <div className="hero-actions">
