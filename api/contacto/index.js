@@ -6,7 +6,7 @@ const adminAddress = "admin@graxiano.com";
 
 function getTableClient() {
   const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-  const tableName = process.env.TABLE_NAME || "consultasMiriart";
+  const tableName = process.env.MIRIART_TABLE_NAME || "consultasMiriart";
 
   return TableClient.fromConnectionString(connectionString, tableName);
 }
@@ -131,7 +131,9 @@ module.exports = async function (context, req) {
     const nombre = (data.nombre || "").trim();
     const email = (data.email || "").trim();
     const tipoEvento = (data.tipoEvento || "").trim();
-    const fechaCiudad = (data.fechaCiudad || "").trim();
+    const fechaEvento = (data.fechaEvento || "").trim();
+    const ciudadEvento = (data.ciudadEvento || "").trim();
+    const fechaCiudad = (data.fechaCiudad || `${fechaEvento} ${ciudadEvento}`.trim()).trim();
     const servicio = (data.servicio || "").trim();
     const mensaje = (data.mensaje || "").trim();
     const privacyAccepted = data.privacyAccepted !== false;
@@ -158,6 +160,8 @@ module.exports = async function (context, req) {
       nombre,
       email,
       tipoEvento,
+      fechaEvento,
+      ciudadEvento,
       fechaCiudad,
       servicio,
       mensaje,

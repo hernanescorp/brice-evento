@@ -296,7 +296,8 @@ function ContactPage() {
       nombre: String(formData.get("nombre") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       tipoEvento: String(formData.get("tipoEvento") || "").trim(),
-      fechaCiudad: String(formData.get("fechaCiudad") || "").trim(),
+      fechaEvento: String(formData.get("fechaEvento") || "").trim(),
+      ciudadEvento: String(formData.get("ciudadEvento") || "").trim(),
       servicio: String(formData.get("servicio") || "").trim(),
       mensaje: String(formData.get("mensaje") || "").trim(),
       privacyAccepted: true,
@@ -313,8 +314,10 @@ function ContactPage() {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("No se pudo enviar la consulta.");
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.ok === false) {
+        throw new Error(result?.error || "No se pudo enviar la consulta.");
       }
 
       event.currentTarget.reset();
@@ -369,8 +372,13 @@ function ContactPage() {
         </label>
 
         <label>
-          Fecha y ciudad
-          <input name="fechaCiudad" type="text" placeholder="Ej. 14/09/2026, Madrid" required />
+          Fecha
+          <input name="fechaEvento" type="date" required />
+        </label>
+
+        <label>
+          Ciudad
+          <input name="ciudadEvento" type="text" placeholder="Ej. Bilbao" required />
         </label>
 
         <label>
