@@ -10,8 +10,9 @@ function Hero() {
 
         <p className="hero-description">
           Miriam convierte tu celebracion en una obra hecha durante el evento:
-          momentos, invitados y detalles pintados con una mirada sensible,
-          colorida y muy personal.
+          momentos, invitados y detalles pintados con una mirada sensible.
+          Ilustradora de bodas con sede en Bizkaia y disponible para
+          desplazamientos.
         </p>
 
         <div className="hero-actions">

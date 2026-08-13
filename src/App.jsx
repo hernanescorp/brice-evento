@@ -1,4 +1,5 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -6,6 +7,131 @@ import Hero from "./components/Hero";
 import ArtworkGrid from "./components/ArtworkGrid";
 import Footer from "./components/Footer";
 import { artworks } from "./data/artworks";
+
+const services = [
+  {
+    number: "01",
+    title: "Live Art",
+    summary:
+      "Ilustraciones hechas en directo para que cada persona se lleve un detalle unico del evento.",
+    details: [
+      "El Live Art, o Arte en Vivo, es un servicio de ilustracion en directo que consiste en realizar acuarelas rapidas y con poco detalle de los invitados de tu boda o evento, captando su esencia con pocas pinceladas empleando alrededor de cinco minutos por persona.",
+      "Habla con Miriam para contarle cuando y donde sera tu evento, y la cantidad de invitados que asistiran, para que pueda recomendarte el tiempo de servicio mas adecuado para ti.",
+    ],
+    portfolioLabel: "Ver ejemplo de Live Art",
+    portfolioTo: "/obras#recuerdo-familiar-a4",
+  },
+  {
+    number: "02",
+    title: "Una obra pintada de los novios",
+    summary:
+      "Una pintura original de la pareja, realizada en directo como recuerdo central de la boda.",
+    details: [
+      "Una opcion ideal si eres amigo/a o familiar de los novios y quieres sorprenderlos con un regalo unico que inmortalice una escena de su dia tan especial.",
+      "Miriam realiza fotografias de los novios durante la ceremonia para pintar despues una obra con acrilico sobre lienzo, inmortalizando ese instante de amor y felicidad que podran atesorar como un recuerdo.",
+      "Contacta con Miriam para acordar el tamano ideal.",
+    ],
+    portfolioLabel: "Ver ejemplo de lienzo",
+    portfolioTo: "/obras#boda-en-vivo",
+  },
+  {
+    number: "03",
+    title: "Marcasitios",
+    summary:
+      "Ilustraciones realizadas previamente para indicar el sitio de los invitados en el banquete.",
+    details: [
+      "Las ilustraciones en acuarela son unas piezas originales para decorar las mesas del banquete de tu boda y que los invitados encuentren su sitio, pudiendo llevarse su ilustracion como recuerdo de ese dia.",
+      "El estilo de estas acuarelas es sencillo, reflejando la esencia de cada persona en pequenas laminas con poco detalle.",
+      "Si quieres tus marcasitios, cuentale a Miriam cuantos invitados quieres ilustrar y tambien la fecha y el lugar de la boda, y ella podra asesorarte.",
+    ],
+    portfolioLabel: "Ver ejemplo de marcasitios",
+    portfolioTo: "/obras#invitada-40x30",
+  },
+  {
+    number: "04",
+    title: "Encargos personalizados",
+    summary: "Una ilustracion o pintura a tu medida.",
+    details: [
+      "Ponte en contacto con Miriam para explicarle que idea tienes y que ella pueda asesorarte.",
+    ],
+    portfolioLabel: "Ver portfolio general",
+    portfolioTo: "/obras",
+    emailCta: true,
+  },
+];
+
+const reviews = [
+  {
+    quote:
+      "El apartado queda preparado para anadir aqui una resena real de Google o de una pareja.",
+    author: "Resena pendiente",
+  },
+  {
+    quote:
+      "Cuando Miriam tenga ficha de Google Business, se puede enlazar para que las parejas dejen su opinion.",
+    author: "Google Reviews",
+  },
+  {
+    quote:
+      "Tambien se pueden mostrar testimonios manuales si no se quiere depender de un widget externo.",
+    author: "Testimonio web",
+  },
+];
+
+function ServiceCards() {
+  return (
+    <div className="event-services">
+      {services.map((service) => (
+        <details className="service-card" key={service.number}>
+          <summary>
+            <span>{service.number}</span>
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+          </summary>
+
+          <div className="service-details">
+            {service.details.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+
+            <div className="service-actions">
+              {service.emailCta ? (
+                <a className="button button-primary" href="mailto:correo-pendiente@miriartstudio.com">
+                  Escribir email
+                </a>
+              ) : (
+                <Link className="button button-primary" to="/contacto#formulario">
+                  Pedir informacion
+                </Link>
+              )}
+
+              <Link className="text-link" to={service.portfolioTo}>
+                {service.portfolioLabel}
+              </Link>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  );
+}
+
+function ScrollToHash() {
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, [hash, pathname]);
+
+  return null;
+}
 
 function HomePage() {
   return (
@@ -24,32 +150,18 @@ function HomePage() {
           </Link>
         </div>
 
-        <div className="event-services">
-          <article>
-            <span>01</span>
-            <h3>Un recuerdo para los invitados</h3>
-            <p>
-              Ilustraciones hechas en directo para que cada persona se lleve un
-              detalle unico del evento.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Una obra pintada de los novios</h3>
-            <p>
-              Una pieza original centrada en la pareja, creada durante la
-              celebracion como recuerdo artistico del dia.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Un encargo personalizado</h3>
-            <p>
-              Una ilustracion o pintura a medida para regalar, decorar o
-              conservar una escena especial fuera del evento.
-            </p>
-          </article>
-        </div>
+        <ServiceCards />
+      </section>
+
+      <section className="location-band">
+        <p className="eyebrow">Bizkaia y desplazamientos</p>
+        <h2>Ilustradora de bodas y eventos con sede en Bizkaia.</h2>
+        <p>
+          Miriart Studio tiene su punto de partida en Bizkaia y trabaja en
+          celebraciones en Bilbao, el Pais Vasco y otros lugares de Espana. Si
+          tu boda se celebra fuera de Bizkaia, Miriam puede desplazarse para
+          acompanarte alli donde tenga lugar vuestro dia.
+        </p>
       </section>
 
       <section className="catalog-section">
@@ -65,6 +177,28 @@ function HomePage() {
         </div>
 
         <ArtworkGrid artworks={artworks} />
+      </section>
+
+      <section className="catalog-section reviews-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Resenas</p>
+            <h2>Opiniones de parejas y personas que ya han confiado en Miriam.</h2>
+          </div>
+
+          <a className="text-link" href="#" aria-label="Ver resenas en Google">
+            Ver en Google
+          </a>
+        </div>
+
+        <div className="reviews-grid">
+          {reviews.map((review) => (
+            <article key={review.author}>
+              <p>{review.quote}</p>
+              <strong>{review.author}</strong>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="cta-band">
@@ -88,8 +222,9 @@ function WorksPage() {
         <p className="eyebrow">Portfolio</p>
         <h1>Bodas pintadas</h1>
         <p>
-          Una galeria breve con obras realizadas para bodas. La web queda
-          preparada para crecer cuando tengamos mas fotos reales.
+          Una galeria breve con obras realizadas para bodas, Live Art,
+          marcasitios y lienzos. La web queda preparada para crecer cuando
+          tengamos mas fotos reales de cada servicio.
         </p>
       </div>
 
@@ -119,6 +254,11 @@ function AboutPage() {
           En cada evento observa la escena, el ambiente y los detalles que hacen
           unico el dia para convertirlos en una obra personal y llena de vida.
         </p>
+
+        <p>
+          Su estudio esta ubicado en Bizkaia, aunque esta disponible para bodas
+          y eventos en el Pais Vasco y en otros puntos de Espana.
+        </p>
       </div>
     </section>
   );
@@ -129,38 +269,14 @@ function CommissionsPage() {
     <section className="page-section">
       <div className="page-header">
         <p className="eyebrow">Servicios</p>
-        <h1>Tres formas de convertir el momento en arte.</h1>
+        <h1>Cuatro formas de convertir el momento en arte.</h1>
         <p>
-          Puedes elegir ilustraciones en directo para invitados, una obra
-          pintada de los novios o un encargo personalizado creado a medida.
+          Puedes elegir Live Art para invitados, una obra pintada de los novios,
+          marcasitios ilustrados o un encargo personalizado creado a medida.
         </p>
       </div>
 
-      <div className="process-grid">
-        <article>
-          <span>01</span>
-          <h2>Un recuerdo para los invitados</h2>
-          <p>Ilustraciones pequenas, hechas a mano durante el evento y pensadas como detalle personal.</p>
-        </article>
-
-        <article>
-          <span>02</span>
-          <h2>Una obra pintada de los novios</h2>
-          <p>Una pintura original de la pareja, realizada en directo como recuerdo central de la boda.</p>
-        </article>
-
-        <article>
-          <span>03</span>
-          <h2>Un encargo personalizado</h2>
-          <p>Una pieza creada por encargo para regalar, decorar o recordar una historia concreta.</p>
-        </article>
-
-        <article>
-          <span>04</span>
-          <h2>Como funciona</h2>
-          <p>Se adapta el formato, el tiempo y el estilo segun el tipo de servicio que elijas.</p>
-        </article>
-      </div>
+      <ServiceCards />
     </section>
   );
 }
@@ -177,9 +293,14 @@ function ContactPage() {
           preparar una propuesta adaptada a la fecha, el lugar y el tipo de
           experiencia que tienes en mente.
         </p>
+
+        <p>
+          El estudio esta en Bizkaia, con disponibilidad para desplazamientos a
+          bodas y eventos en Bilbao, el Pais Vasco y el resto de Espana.
+        </p>
       </div>
 
-      <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
+      <form id="formulario" className="contact-form" onSubmit={(event) => event.preventDefault()}>
         <label>
           Nombre
           <input type="text" placeholder="Tu nombre" />
@@ -239,6 +360,7 @@ function LegalPage({ title }) {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToHash />
       <Header />
 
       <main>

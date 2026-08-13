@@ -16,9 +16,10 @@ function Footer() {
         <div>
           <p className="footer-brand">Miriart Studio</p>
           <p>
-            Pintura en directo para bodas, celebraciones y eventos.
+            Pintura en directo para bodas, celebraciones y eventos desde
+            Bizkaia.
             <br />
-            Recuerdos artisticos creados mientras sucede el momento.
+            Disponible para desplazamientos por el Pais Vasco y Espana.
           </p>
         </div>
 

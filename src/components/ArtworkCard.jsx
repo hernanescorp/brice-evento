@@ -1,6 +1,6 @@
 function ArtworkCard({ artwork }) {
   return (
-    <article className="artwork-card">
+    <article id={artwork.slug} className="artwork-card">
       <div className="artwork-image">
         {artwork.image ? (
           <img src={artwork.image} alt={artwork.title} />
