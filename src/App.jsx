@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
@@ -285,6 +285,47 @@ function CommissionsPage() {
 }
 
 function ContactPage() {
+  const [formStatus, setFormStatus] = useState("idle");
+  const [formMessage, setFormMessage] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      nombre: String(formData.get("nombre") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      tipoEvento: String(formData.get("tipoEvento") || "").trim(),
+      fechaCiudad: String(formData.get("fechaCiudad") || "").trim(),
+      servicio: String(formData.get("servicio") || "").trim(),
+      mensaje: String(formData.get("mensaje") || "").trim(),
+      privacyAccepted: true,
+      privacyAcceptedAt: new Date().toISOString(),
+    };
+
+    setFormStatus("sending");
+    setFormMessage("Enviando consulta...");
+
+    try {
+      const response = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar la consulta.");
+      }
+
+      event.currentTarget.reset();
+      setFormStatus("success");
+      setFormMessage("Consulta enviada correctamente. Te contactaremos pronto.");
+    } catch {
+      setFormStatus("error");
+      setFormMessage("No se pudo enviar la consulta. Intentalo de nuevo o escribe por email.");
+    }
+  }
+
   return (
     <section className="page-section contact-page">
       <div>
@@ -303,20 +344,20 @@ function ContactPage() {
         </p>
       </div>
 
-      <form id="formulario" className="contact-form" onSubmit={(event) => event.preventDefault()}>
+      <form id="formulario" className="contact-form" onSubmit={handleSubmit}>
         <label>
           Nombre
-          <input type="text" placeholder="Tu nombre" />
+          <input name="nombre" type="text" placeholder="Tu nombre" required />
         </label>
 
         <label>
           Correo electronico
-          <input type="email" placeholder="nombre@correo.com" />
+          <input name="email" type="email" placeholder="nombre@correo.com" required />
         </label>
 
         <label>
           Tipo de evento
-          <select defaultValue="">
+          <select name="tipoEvento" defaultValue="" required>
             <option value="" disabled>
               Selecciona una opcion
             </option>
@@ -329,19 +370,30 @@ function ContactPage() {
 
         <label>
           Fecha y ciudad
-          <input type="text" placeholder="Ej. 14/09/2026, Madrid" />
+          <input name="fechaCiudad" type="text" placeholder="Ej. 14/09/2026, Madrid" required />
+        </label>
+
+        <label>
+          Servicio
+          <select name="servicio" defaultValue="">
+            <option value="">Todavia no lo tengo claro</option>
+            <option>Live Art</option>
+            <option>Una obra pintada de los novios</option>
+            <option>Marcasitios</option>
+            <option>Encargos personalizados</option>
+          </select>
         </label>
 
         <label>
           Mensaje
-          <textarea rows="6" placeholder="Cuentanos que te gustaria pintar..." />
+          <textarea name="mensaje" rows="6" placeholder="Cuentanos que te gustaria pintar..." />
         </label>
 
-        <button className="button button-primary" type="submit">
-          Enviar consulta
+        <button className="button button-primary" type="submit" disabled={formStatus === "sending"}>
+          {formStatus === "sending" ? "Enviando..." : "Enviar consulta"}
         </button>
 
-        <small>Formulario visual. El envio se configurara mas adelante.</small>
+        {formMessage ? <small className={`form-status ${formStatus}`}>{formMessage}</small> : null}
       </form>
     </section>
   );

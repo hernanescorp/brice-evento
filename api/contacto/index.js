@@ -1,9 +1,12 @@
 const { TableClient } = require("@azure/data-tables");
 const { EmailClient } = require("@azure/communication-email");
 
+const senderAddress = "DoNotReply@graxiano.com";
+const adminAddress = "admin@graxiano.com";
+
 function getTableClient() {
   const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
-  const tableName = process.env.TABLE_NAME || "reservasEventoprimero";
+  const tableName = process.env.TABLE_NAME || "consultasMiriart";
 
   return TableClient.fromConnectionString(connectionString, tableName);
 }
@@ -12,102 +15,113 @@ function getEmailClient() {
   return new EmailClient(process.env.AZURE_EMAIL_CONNECTION_STRING);
 }
 
-async function enviarEmailConfirmacion(reserva, context) {
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+async function ensureTableExists(tableClient) {
+  try {
+    await tableClient.createTable();
+  } catch (error) {
+    if (error.statusCode !== 409) {
+      throw error;
+    }
+  }
+}
+
+async function enviarEmailConfirmacion(consulta, context) {
   const client = getEmailClient();
 
+  const nombre = escapeHtml(consulta.nombre);
+  const tipoEvento = escapeHtml(consulta.tipoEvento);
+  const fechaCiudad = escapeHtml(consulta.fechaCiudad);
+  const servicio = escapeHtml(consulta.servicio || "No indicado");
+
   const message = {
-    senderAddress: "DoNotReply@graxiano.com",
+    senderAddress,
     content: {
-      subject: "Reserva confirmada - Evento Brice",
-      plainText: `Hola ${reserva.nombre}, hemos recibido correctamente tu solicitud para el evento.`,
+      subject: "Consulta recibida - Miriart Studio",
+      plainText: `Hola ${consulta.nombre}, hemos recibido correctamente tu consulta para Miriart Studio.`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #222; line-height: 1.6;">
-          <h2>Reserva confirmada</h2>
-
-          <p>Hola <strong>${reserva.nombre}</strong>,</p>
-
-          <p>Hemos recibido correctamente tu solicitud para el evento.</p>
-
-          <p><strong>Datos de la reserva:</strong></p>
+          <h2>Consulta recibida</h2>
+          <p>Hola <strong>${nombre}</strong>,</p>
+          <p>Hemos recibido correctamente tu consulta para Miriart Studio.</p>
+          <p><strong>Datos de la consulta:</strong></p>
           <ul>
-            <li><strong>Nombre:</strong> ${reserva.nombre} ${reserva.apellido}</li>
-            <li><strong>Email:</strong> ${reserva.email}</li>
-            <li><strong>Teléfono:</strong> ${reserva.telefono || "No indicado"}</li>
-            <li><strong>Asistentes:</strong> ${reserva.asistentes || "No indicado"}</li>
-            <li><strong>Ciudad:</strong> ${reserva.ciudadResidencia}</li>
-            <li><strong>País:</strong> ${reserva.paisResidencia}</li>
+            <li><strong>Nombre:</strong> ${nombre}</li>
+            <li><strong>Email:</strong> ${escapeHtml(consulta.email)}</li>
+            <li><strong>Tipo de evento:</strong> ${tipoEvento}</li>
+            <li><strong>Fecha y ciudad:</strong> ${fechaCiudad}</li>
+            <li><strong>Servicio:</strong> ${servicio}</li>
           </ul>
-
-          <p>Te contactaremos pronto con más detalles.</p>
-
+          <p>Miriam o el equipo de Graxiano te contactara pronto con mas detalles.</p>
           <br>
-          <p><strong>Equipo Brice Eventos</strong></p>
+          <p><strong>Miriart Studio</strong></p>
           <p style="font-size: 12px; color: #777;">Powered by Graxiano</p>
         </div>
-      `
+      `,
     },
     recipients: {
-      to: [{ address: reserva.email }]
-    }
+      to: [{ address: consulta.email }],
+    },
   };
 
   const poller = await client.beginSend(message);
   await poller.pollUntilDone();
 
-  context.log("Email de confirmación enviado a:", reserva.email);
+  context.log("Email de confirmacion enviado a:", consulta.email);
 }
 
-async function enviarEmailAdmin(reserva, context) {
+async function enviarEmailAdmin(consulta, context) {
   const client = getEmailClient();
 
   const message = {
-    senderAddress: "DoNotReply@graxiano.com",
+    senderAddress,
     content: {
-      subject: `Nueva reserva recibida - ${reserva.nombre} ${reserva.apellido}`,
+      subject: `Nueva consulta Miriart - ${consulta.nombre}`,
       plainText: `
-Nueva reserva recibida.
+Nueva consulta recibida.
 
-Nombre: ${reserva.nombre} ${reserva.apellido}
-Email: ${reserva.email}
-Teléfono: ${reserva.telefono || "No indicado"}
-País nacimiento: ${reserva.paisNacimiento}
-Edad: ${reserva.edad}
-Ciudad residencia: ${reserva.ciudadResidencia}
-País residencia: ${reserva.paisResidencia}
-Asistentes: ${reserva.asistentes || "No indicado"}
-Mensaje: ${reserva.mensaje || "Sin mensaje"}
-Privacidad aceptada: ${reserva.privacyAccepted}
-Fecha aceptación privacidad: ${reserva.privacyAcceptedAt}
-Fecha reserva: ${reserva.fecha}
+Nombre: ${consulta.nombre}
+Email: ${consulta.email}
+Tipo de evento: ${consulta.tipoEvento}
+Fecha y ciudad: ${consulta.fechaCiudad}
+Servicio: ${consulta.servicio || "No indicado"}
+Mensaje: ${consulta.mensaje || "Sin mensaje"}
+Privacidad aceptada: ${consulta.privacyAccepted}
+Fecha aceptacion privacidad: ${consulta.privacyAcceptedAt}
+Fecha consulta: ${consulta.fecha}
       `,
       html: `
         <div style="font-family: Arial, sans-serif; color: #222; line-height: 1.6;">
-          <h2>Nueva reserva recibida</h2>
-
-          <p><strong>Nombre:</strong> ${reserva.nombre} ${reserva.apellido}</p>
-          <p><strong>Email:</strong> ${reserva.email}</p>
-          <p><strong>Teléfono:</strong> ${reserva.telefono || "No indicado"}</p>
-          <p><strong>País nacimiento:</strong> ${reserva.paisNacimiento}</p>
-          <p><strong>Edad:</strong> ${reserva.edad}</p>
-          <p><strong>Ciudad residencia:</strong> ${reserva.ciudadResidencia}</p>
-          <p><strong>País residencia:</strong> ${reserva.paisResidencia}</p>
-          <p><strong>Asistentes:</strong> ${reserva.asistentes || "No indicado"}</p>
-          <p><strong>Mensaje:</strong> ${reserva.mensaje || "Sin mensaje"}</p>
-          <p><strong>Privacidad aceptada:</strong> ${reserva.privacyAccepted}</p>
-          <p><strong>Fecha aceptación privacidad:</strong> ${reserva.privacyAcceptedAt}</p>
-          <p><strong>Fecha reserva:</strong> ${reserva.fecha}</p>
+          <h2>Nueva consulta Miriart</h2>
+          <p><strong>Nombre:</strong> ${escapeHtml(consulta.nombre)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(consulta.email)}</p>
+          <p><strong>Tipo de evento:</strong> ${escapeHtml(consulta.tipoEvento)}</p>
+          <p><strong>Fecha y ciudad:</strong> ${escapeHtml(consulta.fechaCiudad)}</p>
+          <p><strong>Servicio:</strong> ${escapeHtml(consulta.servicio || "No indicado")}</p>
+          <p><strong>Mensaje:</strong> ${escapeHtml(consulta.mensaje || "Sin mensaje")}</p>
+          <p><strong>Privacidad aceptada:</strong> ${consulta.privacyAccepted}</p>
+          <p><strong>Fecha aceptacion privacidad:</strong> ${escapeHtml(consulta.privacyAcceptedAt)}</p>
+          <p><strong>Fecha consulta:</strong> ${escapeHtml(consulta.fecha)}</p>
         </div>
-      `
+      `,
     },
     recipients: {
-      to: [{ address: "admin@graxiano.com" }]
-    }
+      to: [{ address: adminAddress }],
+    },
   };
 
   const poller = await client.beginSend(message);
   await poller.pollUntilDone();
 
-  context.log("Email de aviso enviado a admin@graxiano.com");
+  context.log(`Email de aviso enviado a ${adminAddress}`);
 }
 
 module.exports = async function (context, req) {
@@ -115,65 +129,48 @@ module.exports = async function (context, req) {
     const data = req.body || {};
 
     const nombre = (data.nombre || "").trim();
-    const apellido = (data.apellido || "").trim();
     const email = (data.email || "").trim();
-    const telefono = (data.telefono || "").trim();
-    const paisNacimiento = (data.paisNacimiento || "").trim();
-    const edad = String(data.edad || "").trim();
-    const ciudadResidencia = (data.ciudadResidencia || "").trim();
-    const paisResidencia = (data.paisResidencia || "").trim();
-    const asistentes = String(data.asistentes || "").trim();
+    const tipoEvento = (data.tipoEvento || "").trim();
+    const fechaCiudad = (data.fechaCiudad || "").trim();
+    const servicio = (data.servicio || "").trim();
     const mensaje = (data.mensaje || "").trim();
-    const privacyAccepted = Boolean(data.privacyAccepted);
+    const privacyAccepted = data.privacyAccepted !== false;
     const privacyAcceptedAt = data.privacyAcceptedAt || new Date().toISOString();
 
-    if (
-      !nombre ||
-      !apellido ||
-      !email ||
-      !paisNacimiento ||
-      !edad ||
-      !ciudadResidencia ||
-      !paisResidencia ||
-      !privacyAccepted
-    ) {
+    if (!nombre || !email || !tipoEvento || !fechaCiudad) {
       context.res = {
         status: 400,
         headers: { "Content-Type": "application/json" },
         body: {
           ok: false,
-          error:
-            "Nombre, apellido, email, país de nacimiento, edad, ciudad, país de residencia y aceptación de privacidad son obligatorios."
-        }
+          error: "Nombre, email, tipo de evento, fecha y ciudad son obligatorios.",
+        },
       };
       return;
     }
 
     const tableClient = getTableClient();
+    await ensureTableExists(tableClient);
 
-    const reserva = {
-      partitionKey: "evento-brice",
+    const consulta = {
+      partitionKey: "miriart-studio",
       rowKey: `${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
       nombre,
-      apellido,
       email,
-      telefono,
-      paisNacimiento,
-      edad,
-      ciudadResidencia,
-      paisResidencia,
-      asistentes,
+      tipoEvento,
+      fechaCiudad,
+      servicio,
       mensaje,
       privacyAccepted,
       privacyAcceptedAt,
-      fecha: new Date().toISOString()
+      fecha: new Date().toISOString(),
     };
 
-    await tableClient.createEntity(reserva);
+    await tableClient.createEntity(consulta);
 
     try {
-      await enviarEmailConfirmacion(reserva, context);
-      await enviarEmailAdmin(reserva, context);
+      await enviarEmailConfirmacion(consulta, context);
+      await enviarEmailAdmin(consulta, context);
     } catch (emailError) {
       context.log.error("Error enviando email:", emailError);
     }
@@ -183,19 +180,19 @@ module.exports = async function (context, req) {
       headers: { "Content-Type": "application/json" },
       body: {
         ok: true,
-        message: "Reserva guardada correctamente."
-      }
+        message: "Consulta enviada correctamente.",
+      },
     };
   } catch (error) {
-    context.log.error("Error guardando reserva:", error);
+    context.log.error("Error guardando consulta:", error);
 
     context.res = {
       status: 500,
       headers: { "Content-Type": "application/json" },
       body: {
         ok: false,
-        error: "Error guardando la reserva."
-      }
+        error: "Error enviando la consulta.",
+      },
     };
   }
 };

@@ -188,6 +188,11 @@
   border-color: var(--miri-yellow);
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .text-link {
   padding-bottom: 4px;
   border-bottom: 1px solid currentColor;
@@ -794,6 +799,19 @@
 
 .contact-form small {
   color: var(--muted);
+}
+
+.contact-form .form-status {
+  max-width: 420px;
+  font-weight: 600;
+}
+
+.contact-form .form-status.success {
+  color: var(--miri-blue);
+}
+
+.contact-form .form-status.error {
+  color: var(--miri-pink);
 }
 
 .legal-page {
