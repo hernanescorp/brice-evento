@@ -96,7 +96,7 @@ function ServiceCards() {
 
             <div className="service-actions">
               {service.emailCta ? (
-                <a className="button button-primary" href="mailto:correo-pendiente@miriartstudio.com">
+                <a className="button button-primary" href="mailto:miriart.studio@gmail.com">
                   Escribir email
                 </a>
               ) : (

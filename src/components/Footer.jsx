@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
 
+const contactEmail = "miriart.studio@gmail.com";
+
 function Footer() {
+  function handleNewsletterSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const userEmail = String(formData.get("email") || "").trim();
+    const subject = encodeURIComponent("Consulta desde Miriart Studio");
+    const body = encodeURIComponent(
+      userEmail
+        ? `Hola Miriam,\n\nQuiero contarte mi idea.\n\nMi email es: ${userEmail}`
+        : "Hola Miriam,\n\nQuiero contarte mi idea."
+    );
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+  }
+
   return (
     <footer className="site-footer">
       <section className="newsletter">
@@ -10,8 +27,8 @@ function Footer() {
 
         <h2>Cuentame tu idea</h2>
 
-        <form onSubmit={(event) => event.preventDefault()}>
-          <input type="email" placeholder="Email" aria-label="Email" />
+        <form onSubmit={handleNewsletterSubmit}>
+          <input name="email" type="email" placeholder="Email" aria-label="Email" />
           <button type="submit">Contactar</button>
         </form>
       </section>
@@ -51,7 +68,7 @@ function Footer() {
           >
             TikTok
           </a>
-          <a href="mailto:correo-pendiente@miriartstudio.com">Email</a>
+          <a href={`mailto:${contactEmail}`}>Email</a>
         </div>
       </div>
 
