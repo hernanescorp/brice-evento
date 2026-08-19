@@ -420,6 +420,96 @@ function LegalPage({ title }) {
   );
 }
 
+function PrivacyPage() {
+  return (
+    <section className="page-section legal-page">
+      <p className="eyebrow">Informacion legal</p>
+      <h1>Politica de privacidad</h1>
+
+      <div className="legal-content">
+        <p>
+          En Miriart Studio tratamos los datos personales con cuidado y solo
+          para atender las consultas, solicitudes de presupuesto y comunicaciones
+          relacionadas con los servicios artisticos ofrecidos en esta web.
+        </p>
+
+        <h2>Responsable del tratamiento</h2>
+        <p>
+          Responsable: Miriart Studio.
+          <br />
+          Email de contacto:{" "}
+          <a href="mailto:miriart.studio@gmail.com">miriart.studio@gmail.com</a>.
+          <br />
+          Datos identificativos y direccion fiscal: pendientes de completar por
+          la titular de la actividad.
+        </p>
+
+        <h2>Datos que se recogen</h2>
+        <p>
+          A traves del formulario de contacto se pueden recoger nombre, correo
+          electronico, tipo de evento, fecha, ciudad, servicio solicitado y el
+          contenido del mensaje. Tambien se pueden tratar los datos que el
+          usuario facilite voluntariamente por email.
+        </p>
+
+        <h2>Finalidad</h2>
+        <p>
+          Los datos se usan para responder consultas, gestionar solicitudes de
+          informacion, preparar propuestas o presupuestos y mantener la
+          comunicacion necesaria sobre encargos, bodas o eventos.
+        </p>
+
+        <h2>Base legal</h2>
+        <p>
+          La base legal es el consentimiento del usuario al enviar el formulario
+          o escribir por email, y la aplicacion de medidas precontractuales
+          cuando la consulta tenga relacion con la contratacion de un servicio.
+        </p>
+
+        <h2>Conservacion</h2>
+        <p>
+          Los datos se conservaran durante el tiempo necesario para atender la
+          consulta y, si se contrata un servicio, durante los plazos legales
+          aplicables a obligaciones administrativas, fiscales o contractuales.
+        </p>
+
+        <h2>Destinatarios</h2>
+        <p>
+          No se cederan datos a terceros salvo obligacion legal o cuando sea
+          necesario para prestar el servicio solicitado. La web puede apoyarse en
+          proveedores tecnicos de alojamiento, correo electronico o mantenimiento
+          que actuen como encargados del tratamiento.
+        </p>
+
+        <h2>Derechos</h2>
+        <p>
+          El usuario puede solicitar el acceso, rectificacion, supresion,
+          oposicion, limitacion del tratamiento y portabilidad de sus datos
+          escribiendo a{" "}
+          <a href="mailto:miriart.studio@gmail.com">miriart.studio@gmail.com</a>.
+          Tambien puede presentar una reclamacion ante la Agencia Espanola de
+          Proteccion de Datos si considera que sus derechos no han sido
+          atendidos correctamente.
+        </p>
+
+        <h2>Seguridad</h2>
+        <p>
+          Se aplicaran medidas tecnicas y organizativas razonables para proteger
+          los datos personales frente a accesos no autorizados, perdida,
+          alteracion o divulgacion indebida.
+        </p>
+
+        <h2>Actualizaciones</h2>
+        <p>
+          Esta politica puede actualizarse para adaptarse a cambios legales,
+          tecnicos o de funcionamiento de la web. Ultima actualizacion: agosto
+          de 2026.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -435,7 +525,7 @@ function App() {
           <Route path="/encargos" element={<CommissionsPage />} />
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/aviso-legal" element={<LegalPage title="Aviso legal" />} />
-          <Route path="/privacidad" element={<LegalPage title="Politica de privacidad" />} />
+          <Route path="/privacidad" element={<PrivacyPage />} />
           <Route path="/cookies" element={<LegalPage title="Politica de cookies" />} />
         </Routes>
       </main>

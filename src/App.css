@@ -825,11 +825,29 @@
   font-weight: 500;
 }
 
-.legal-page > p:last-child {
+.legal-page > p:last-child,
+.legal-content {
   max-width: 780px;
   margin-top: 36px;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.legal-content h2 {
+  margin: 32px 0 8px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 500;
+}
+
+.legal-content p {
+  margin: 0;
+}
+
+.legal-content a {
+  color: var(--ink);
+  text-underline-offset: 4px;
 }
 
 .site-footer {
