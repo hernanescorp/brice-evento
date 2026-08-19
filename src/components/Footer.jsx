@@ -35,10 +35,20 @@ function Footer() {
         </div>
 
         <div className="footer-social">
-          <a href="#" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/miriart_studio?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+            aria-label="Instagram"
+            target="_blank"
+            rel="noreferrer"
+          >
             Instagram
           </a>
-          <a href="#" aria-label="TikTok">
+          <a
+            href="https://www.tiktok.com/@miriart_studio2?is_from_webapp=1&sender_device=pc"
+            aria-label="TikTok"
+            target="_blank"
+            rel="noreferrer"
+          >
             TikTok
           </a>
           <a href="mailto:correo-pendiente@miriartstudio.com">Email</a>

@@ -247,7 +247,7 @@ function AboutPage() {
         <p>
           El arte siempre ha formado parte de la vida de Miriam desde su
           infancia, convirtiendose con el tiempo en una forma de expresion y en
-          parte de su identidad. No hay dia que su madre no la recuerde, en
+          parte de su identidad. No hay dia que su familia no la recuerde, en
           todas sus excursiones, llevando consigo un bloc de dibujo y unos
           lapices para pasarse dibujando las horas muertas.
         </p>
