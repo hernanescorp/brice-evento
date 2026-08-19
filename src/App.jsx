@@ -78,6 +78,52 @@ const reviews = [
   },
 ];
 
+const routeMeta = {
+  "/": {
+    title: "Miriart Studio | Ilustradora de bodas y eventos en Bizkaia",
+    description:
+      "Live Art, acuarela en directo, lienzos de novios, marcasitios y encargos personalizados para bodas y eventos desde Bizkaia.",
+  },
+  "/servicios": {
+    title: "Servicios | Miriart Studio",
+    description:
+      "Servicios artisticos para bodas y eventos: Live Art, lienzos de novios, marcasitios y encargos personalizados.",
+  },
+  "/encargos": {
+    title: "Servicios | Miriart Studio",
+    description:
+      "Encargos personalizados, acuarelas y pintura a medida para bodas, celebraciones y eventos.",
+  },
+  "/obras": {
+    title: "Portfolio | Miriart Studio",
+    description:
+      "Galeria de obras de Miriart Studio: bodas pintadas, Live Art, marcasitios y encargos personalizados.",
+  },
+  "/sobre-mi": {
+    title: "Sobre mi | Miriart Studio",
+    description:
+      "Conoce a Miriam, artista detras de Miriart Studio, ilustradora de bodas y eventos con estudio en Bizkaia.",
+  },
+  "/contacto": {
+    title: "Contacto | Miriart Studio",
+    description:
+      "Contacta con Miriart Studio para consultar disponibilidad, contar tu idea o pedir informacion para tu boda o evento.",
+  },
+  "/aviso-legal": {
+    title: "Aviso legal | Miriart Studio",
+    description: "Informacion legal de la web de Miriart Studio.",
+  },
+  "/privacidad": {
+    title: "Politica de privacidad | Miriart Studio",
+    description:
+      "Informacion sobre el tratamiento de datos personales en la web de Miriart Studio.",
+  },
+  "/cookies": {
+    title: "Politica de cookies | Miriart Studio",
+    description: "Informacion sobre el uso de cookies en la web de Miriart Studio.",
+  },
+};
+
 function ServiceCards() {
   return (
     <div className="event-services">
@@ -129,6 +175,27 @@ function ScrollToHash() {
       document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
     });
   }, [hash, pathname]);
+
+  return null;
+}
+
+function SeoMeta() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const meta = routeMeta[pathname] || routeMeta["/"];
+    document.title = meta.title;
+
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", meta.description);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute("content", meta.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", meta.description);
+  }, [pathname]);
 
   return null;
 }
@@ -583,6 +650,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToHash />
+      <SeoMeta />
       <Header />
 
       <main>
