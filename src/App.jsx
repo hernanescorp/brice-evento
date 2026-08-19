@@ -510,6 +510,75 @@ function PrivacyPage() {
   );
 }
 
+function CookiesPage() {
+  return (
+    <section className="page-section legal-page">
+      <p className="eyebrow">Informacion legal</p>
+      <h1>Politica de cookies</h1>
+
+      <div className="legal-content">
+        <p>
+          Esta politica explica que son las cookies y como pueden utilizarse en
+          la web de Miriart Studio. Actualmente la web no utiliza cookies de
+          analitica, publicidad comportamental ni seguimiento comercial.
+        </p>
+
+        <h2>Que son las cookies</h2>
+        <p>
+          Las cookies son pequenos archivos que una pagina web puede guardar en
+          el navegador del usuario para recordar informacion tecnica, mantener
+          preferencias o medir el uso de la web.
+        </p>
+
+        <h2>Cookies utilizadas en esta web</h2>
+        <p>
+          En este momento, Miriart Studio solo preve el uso de cookies tecnicas
+          o elementos similares necesarios para que la web funcione
+          correctamente, por ejemplo para cargar la pagina, mantener la seguridad
+          o recordar ajustes imprescindibles de navegacion.
+        </p>
+
+        <h2>Cookies que no requieren consentimiento</h2>
+        <p>
+          Las cookies tecnicas necesarias para prestar el servicio solicitado por
+          el usuario pueden utilizarse sin solicitar consentimiento previo,
+          aunque se informa de ellas en esta politica.
+        </p>
+
+        <h2>Cookies de analitica o publicidad</h2>
+        <p>
+          Actualmente no se instalan cookies de Google Analytics, Meta Pixel,
+          TikTok Pixel, publicidad personalizada ni herramientas equivalentes.
+          Si en el futuro se incorporan cookies no necesarias, se mostrara un
+          banner o panel de configuracion para que el usuario pueda aceptarlas,
+          rechazarlas o modificar su eleccion antes de que se instalen.
+        </p>
+
+        <h2>Gestion desde el navegador</h2>
+        <p>
+          El usuario puede bloquear, eliminar o limitar las cookies desde la
+          configuracion de su navegador. La desactivacion de cookies tecnicas
+          puede afectar al funcionamiento normal de algunas partes de la web.
+        </p>
+
+        <h2>Cambios en la politica</h2>
+        <p>
+          Esta politica puede actualizarse si cambian las herramientas tecnicas
+          utilizadas en la web o si se incorporan servicios de medicion,
+          publicidad o contenidos de terceros. Ultima actualizacion: agosto de
+          2026.
+        </p>
+
+        <h2>Contacto</h2>
+        <p>
+          Para cualquier duda sobre esta politica puedes escribir a{" "}
+          <a href="mailto:miriart.studio@gmail.com">miriart.studio@gmail.com</a>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -526,7 +595,7 @@ function App() {
           <Route path="/contacto" element={<ContactPage />} />
           <Route path="/aviso-legal" element={<LegalPage title="Aviso legal" />} />
           <Route path="/privacidad" element={<PrivacyPage />} />
-          <Route path="/cookies" element={<LegalPage title="Politica de cookies" />} />
+          <Route path="/cookies" element={<CookiesPage />} />
         </Routes>
       </main>
 
