@@ -209,7 +209,7 @@ function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Servicios</p>
-            <h2>Un recuerdo para los invitados.</h2>
+            <h2>Un recuerdo único para los invitados.</h2>
           </div>
 
           <Link className="text-link" to="/contacto">
