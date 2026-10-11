@@ -64,24 +64,6 @@ const services = [
   },
 ];
 
-const reviews = [
-  {
-    quote:
-      "El apartado queda preparado para anadir aqui una resena real de Google o de una pareja.",
-    author: "Resena pendiente",
-  },
-  {
-    quote:
-      "Cuando Miriam tenga ficha de Google Business, se puede enlazar para que las parejas dejen su opinion.",
-    author: "Google Reviews",
-  },
-  {
-    quote:
-      "Tambien se pueden mostrar testimonios manuales si no se quiere depender de un widget externo.",
-    author: "Testimonio web",
-  },
-];
-
 const routeMeta = {
   "/": {
     title: "Miriart Studio | Ilustradora de bodas y eventos en Bizkaia",
@@ -232,43 +214,6 @@ function HomePage() {
           tu boda se celebra fuera de Bizkaia, Miriam puede desplazarse para
           acompañarte alli donde tenga lugar vuestro dia.
         </p>
-      </section>
-
-      <section className="catalog-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Bodas ya pintadas</p>
-            <h2>Cuatro ejemplos reales para imaginar la tuya.</h2>
-          </div>
-
-          <Link className="text-link" to="/obras">
-            Ver las 4 obras
-          </Link>
-        </div>
-
-        <ArtworkGrid artworks={artworks} limit={4} />
-      </section>
-
-      <section className="catalog-section reviews-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Resenas</p>
-            <h2>Opiniones de parejas y personas que ya han confiado en Miriam.</h2>
-          </div>
-
-          <a className="text-link" href="#" aria-label="Ver resenas en Google">
-            Ver en Google
-          </a>
-        </div>
-
-        <div className="reviews-grid">
-          {reviews.map((review) => (
-            <article key={review.author}>
-              <p>{review.quote}</p>
-              <strong>{review.author}</strong>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section className="cta-band">
