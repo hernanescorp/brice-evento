@@ -20,7 +20,7 @@ const services = [
       "Habla con Miriam para contarle cuando y donde sera tu evento, y la cantidad de invitados que asistiran, para que pueda recomendarte el tiempo de servicio mas adecuado para ti.",
     ],
     portfolioLabel: "Ver ejemplo de Live Art",
-    portfolioTo: "/obras#recuerdo-familiar-a4",
+    portfolioTo: "/obras#live-art",
   },
   {
     number: "02",
@@ -34,7 +34,7 @@ const services = [
       "Contacta con Miriam para acordar el tamaño ideal.",
     ],
     portfolioLabel: "Ver ejemplo de lienzo",
-    portfolioTo: "/obras#boda-en-vivo",
+    portfolioTo: "/obras#obra-novios",
   },
   {
     number: "03",
@@ -48,7 +48,7 @@ const services = [
       "Si quieres tus marcasitios, cuentale a Miriam cuantos invitados quieres ilustrar y tambien la fecha y el lugar de la boda, y ella podra asesorarte.",
     ],
     portfolioLabel: "Ver ejemplo de marcasitios",
-    portfolioTo: "/obras#invitada-40x30",
+    portfolioTo: "/obras#marcasitios",
   },
   {
     number: "04",
@@ -246,7 +246,7 @@ function HomePage() {
           </Link>
         </div>
 
-        <ArtworkGrid artworks={artworks} />
+        <ArtworkGrid artworks={artworks} limit={4} />
       </section>
 
       <section className="catalog-section reviews-section">
@@ -290,7 +290,7 @@ function WorksPage() {
     <section className="page-section">
       <div className="page-header">
         <p className="eyebrow">Portfolio</p>
-        <h1>Obras por servicio</h1>
+        <h1>Portfolio</h1>
         <p>
           Descubre las obras de Live Art, pinturas de novios, marcasitios
           y encargos personalizados.
@@ -320,7 +320,7 @@ function WorksPage() {
               <ArtworkGrid artworks={serviceArtworks} />
             ) : (
               <Link className="text-link" to="/contacto#formulario">
-                Cuéntanos tu idea para un encargo personalizado
+                Consultar sobre {service.title.toLowerCase()}
               </Link>
             )}
           </section>

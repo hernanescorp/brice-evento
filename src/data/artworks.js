@@ -1,7 +1,6 @@
 export const artworks = [
   {
     id: 1,
-    service: "obra-novios",
     slug: "boda-en-vivo",
     title: "Ceremonia en el bosque",
     category: "Boda pintada",
@@ -15,7 +14,6 @@ export const artworks = [
   },
   {
     id: 2,
-    service: "obra-novios",
     slug: "pareja-retratar",
     title: "Ilustracion A5 de novios",
     category: "Boda pintada",
@@ -29,10 +27,9 @@ export const artworks = [
   },
   {
     id: 3,
-    service: "live-art",
     slug: "recuerdo-familiar-a4",
     title: "Recuerdo familiar A4",
-    category: "Live Art",
+    category: "Boda pintada",
     technique: "Acuarela y tinta",
     dimensions: "Formato A4",
     year: "2026",
@@ -43,7 +40,6 @@ export const artworks = [
   },
   {
     id: 4,
-    service: "marcasitios",
     slug: "invitada-40x30",
     title: "Invitada 40 x 30 cm",
     category: "Marcasitios",
@@ -55,4 +51,31 @@ export const artworks = [
     image: "/images/boda-ilustracion-40x30.jpg",
     tone: "gold",
   },
+  ...[1, 2, 4, 5].map((photoNumber) => {
+    const number = String(photoNumber).padStart(2, "0");
+
+    return {
+      id: 4 + photoNumber,
+      service: "live-art",
+      slug: `live-art-${number}`,
+      title: `Live Art ${number}`,
+      category: "Live Art",
+      status: "Live Art",
+      image: `/images/liveart/live-art-${number}.webp`,
+    };
+  }),
+  ...[
+    "30_05_2026",
+    "04_07_2026",
+    "29_08_2026",
+    "26_09_2026",
+  ].map((date, index) => ({
+    id: 11 + index,
+    service: "obra-novios",
+    slug: `obra-novios-${date.replaceAll("_", "-")}`,
+    title: `Obra de novios ${String(index + 1).padStart(2, "0")}`,
+    category: "Una obra pintada de los novios",
+    status: "Boda",
+    image: `/images/obra_novios/Copia%20de%20${date}.webp`,
+  })),
 ];
