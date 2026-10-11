@@ -3,6 +3,7 @@ const { EmailClient } = require("@azure/communication-email");
 
 const senderAddress = "DoNotReply@graxiano.com";
 const adminAddress = "admin@graxiano.com";
+const studioAddress = "miriart.studio@gmail.com";
 
 function getTableClient() {
   const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
@@ -114,14 +115,14 @@ Fecha consulta: ${consulta.fecha}
       `,
     },
     recipients: {
-      to: [{ address: adminAddress }],
+      to: [{ address: adminAddress }, { address: studioAddress }],
     },
   };
 
   const poller = await client.beginSend(message);
   await poller.pollUntilDone();
 
-  context.log(`Email de aviso enviado a ${adminAddress}`);
+  context.log(`Email de aviso enviado a ${adminAddress} y ${studioAddress}`);
 }
 
 module.exports = async function (context, req) {

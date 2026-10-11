@@ -358,7 +358,8 @@ function ContactPage() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const payload = {
       nombre: String(formData.get("nombre") || "").trim(),
       email: String(formData.get("email") || "").trim(),
@@ -387,7 +388,7 @@ function ContactPage() {
         throw new Error(result?.error || "No se pudo enviar la consulta.");
       }
 
-      event.currentTarget.reset();
+      form.reset();
       setFormStatus("success");
       setFormMessage("Consulta enviada correctamente. Te contactaremos pronto.");
     } catch {
