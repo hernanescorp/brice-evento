@@ -294,6 +294,26 @@
   line-height: 1;
 }
 
+.portfolio-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  margin-bottom: 48px;
+}
+
+.portfolio-service {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 96px;
+}
+
+.portfolio-service .section-heading p {
+  max-width: 720px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .artwork-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

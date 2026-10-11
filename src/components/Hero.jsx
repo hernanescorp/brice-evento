@@ -10,7 +10,7 @@ function Hero() {
 
         <p className="hero-description">
           Miriam transforma tu celebracion en un recuerdo especial. Personas,
-          emociones y pequenos detalles cobran vida en obras unicas, creadas
+          emociones y pequeños detalles cobran vida en obras unicas, creadas
           con una mirada sensible, colorida y muy personal.
         </p>
 

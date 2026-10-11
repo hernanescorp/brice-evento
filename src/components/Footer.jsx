@@ -40,7 +40,7 @@ function Footer() {
             Pintura en directo para bodas, celebraciones y eventos desde
             Bizkaia.
             <br />
-            Disponible para desplazamientos por el Pais Vasco y Espana.
+            Disponible para desplazamientos por el Pais Vasco y España.
           </p>
         </div>
 

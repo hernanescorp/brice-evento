@@ -11,6 +11,7 @@ import { artworks } from "./data/artworks";
 const services = [
   {
     number: "01",
+    id: "live-art",
     title: "Live Art",
     summary:
       "Ilustraciones hechas en directo para que cada persona se lleve un detalle unico del evento.",
@@ -23,19 +24,21 @@ const services = [
   },
   {
     number: "02",
+    id: "obra-novios",
     title: "Una obra pintada de los novios",
     summary:
       "Una pintura original de la pareja, realizada en directo como recuerdo central de la boda.",
     details: [
       "Una opcion ideal si eres amigo/a o familiar de los novios y quieres sorprenderlos con un regalo unico que inmortalice una escena de su dia tan especial.",
       "Miriam realiza fotografias de los novios durante la ceremonia para pintar despues una obra con acrilico sobre lienzo, inmortalizando ese instante de amor y felicidad que podran atesorar como un recuerdo.",
-      "Contacta con Miriam para acordar el tamano ideal.",
+      "Contacta con Miriam para acordar el tamaño ideal.",
     ],
     portfolioLabel: "Ver ejemplo de lienzo",
     portfolioTo: "/obras#boda-en-vivo",
   },
   {
     number: "03",
+    id: "marcasitios",
     title: "Marcasitios",
     summary:
       "Ilustraciones realizadas previamente para indicar el sitio de los invitados en el banquete.",
@@ -49,13 +52,14 @@ const services = [
   },
   {
     number: "04",
+    id: "encargos-personalizados",
     title: "Encargos personalizados",
     summary: "Una ilustracion o pintura a tu medida.",
     details: [
       "Ponte en contacto con Miriam para explicarle que idea tienes y que ella pueda asesorarte.",
     ],
     portfolioLabel: "Ver portfolio general",
-    portfolioTo: "/obras",
+    portfolioTo: "/obras#encargos-personalizados",
     emailCta: true,
   },
 ];
@@ -209,7 +213,6 @@ function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Servicios</p>
-            <h2>Un recuerdo único para los invitados.</h2>
           </div>
 
           <Link className="text-link" to="/contacto">
@@ -225,9 +228,9 @@ function HomePage() {
         <h2>Ilustradora de bodas y eventos con sede en Bizkaia.</h2>
         <p>
           Miriart Studio tiene su punto de partida en Bizkaia y trabaja en
-          celebraciones en Bilbao, el Pais Vasco y otros lugares de Espana. Si
+          celebraciones en Bilbao, el Pais Vasco y otros lugares de España. Si
           tu boda se celebra fuera de Bizkaia, Miriam puede desplazarse para
-          acompanarte alli donde tenga lugar vuestro dia.
+          acompañarte alli donde tenga lugar vuestro dia.
         </p>
       </section>
 
@@ -287,15 +290,42 @@ function WorksPage() {
     <section className="page-section">
       <div className="page-header">
         <p className="eyebrow">Portfolio</p>
-        <h1>Bodas pintadas</h1>
+        <h1>Obras por servicio</h1>
         <p>
-          Una galeria breve con obras realizadas para bodas, Live Art,
-          marcasitios y lienzos. La web queda preparada para crecer cuando
-          tengamos mas fotos reales de cada servicio.
+          Descubre las obras de Live Art, pinturas de novios, marcasitios
+          y encargos personalizados.
         </p>
       </div>
 
-      <ArtworkGrid artworks={artworks} />
+      <nav className="portfolio-navigation" aria-label="Servicios del portfolio">
+        {services.map((service) => (
+          <Link className="text-link" key={service.id} to={`/obras#${service.id}`}>
+            {service.title}
+          </Link>
+        ))}
+      </nav>
+
+      {services.map((service) => {
+        const serviceArtworks = artworks.filter((artwork) => artwork.service === service.id);
+
+        return (
+          <section className="portfolio-service" id={service.id} key={service.id} aria-labelledby={`${service.id}-title`}>
+            <div className="section-heading">
+              <div>
+                <h2 id={`${service.id}-title`}>{service.title}</h2>
+                <p>{service.summary}</p>
+              </div>
+            </div>
+            {serviceArtworks.length > 0 ? (
+              <ArtworkGrid artworks={serviceArtworks} />
+            ) : (
+              <Link className="text-link" to="/contacto#formulario">
+                Cuéntanos tu idea para un encargo personalizado
+              </Link>
+            )}
+          </section>
+        );
+      })}
     </section>
   );
 }
@@ -327,7 +357,7 @@ function AboutPage() {
 
         <p>
           Su estudio esta ubicado en Bizkaia, aunque esta disponible para bodas
-          y eventos en el Pais Vasco y en otros puntos de Espana.
+          y eventos en el Pais Vasco y en otros puntos de España.
         </p>
       </div>
     </section>
@@ -411,7 +441,7 @@ function ContactPage() {
 
         <p>
           El estudio esta en Bizkaia, con disponibilidad para desplazamientos a
-          bodas y eventos en Bilbao, el Pais Vasco y el resto de Espana.
+          bodas y eventos en Bilbao, el Pais Vasco y el resto de España.
         </p>
       </div>
 
@@ -555,7 +585,7 @@ function PrivacyPage() {
           oposicion, limitacion del tratamiento y portabilidad de sus datos
           escribiendo a{" "}
           <a href="mailto:miriart.studio@gmail.com">miriart.studio@gmail.com</a>.
-          Tambien puede presentar una reclamacion ante la Agencia Espanola de
+          Tambien puede presentar una reclamacion ante la Agencia Española de
           Proteccion de Datos si considera que sus derechos no han sido
           atendidos correctamente.
         </p>
@@ -593,7 +623,7 @@ function CookiesPage() {
 
         <h2>Que son las cookies</h2>
         <p>
-          Las cookies son pequenos archivos que una pagina web puede guardar en
+          Las cookies son pequeños archivos que una pagina web puede guardar en
           el navegador del usuario para recordar informacion tecnica, mantener
           preferencias o medir el uso de la web.
         </p>

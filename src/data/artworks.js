@@ -1,6 +1,7 @@
 export const artworks = [
   {
     id: 1,
+    service: "obra-novios",
     slug: "boda-en-vivo",
     title: "Ceremonia en el bosque",
     category: "Boda pintada",
@@ -14,6 +15,7 @@ export const artworks = [
   },
   {
     id: 2,
+    service: "obra-novios",
     slug: "pareja-retratar",
     title: "Ilustracion A5 de novios",
     category: "Boda pintada",
@@ -27,9 +29,10 @@ export const artworks = [
   },
   {
     id: 3,
+    service: "live-art",
     slug: "recuerdo-familiar-a4",
     title: "Recuerdo familiar A4",
-    category: "Boda pintada",
+    category: "Live Art",
     technique: "Acuarela y tinta",
     dimensions: "Formato A4",
     year: "2026",
@@ -40,9 +43,10 @@ export const artworks = [
   },
   {
     id: 4,
+    service: "marcasitios",
     slug: "invitada-40x30",
     title: "Invitada 40 x 30 cm",
-    category: "Boda pintada",
+    category: "Marcasitios",
     technique: "Acuarela y tinta",
     dimensions: "40 x 30 cm",
     year: "2026",
